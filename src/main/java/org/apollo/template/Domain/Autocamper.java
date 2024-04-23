@@ -1,13 +1,15 @@
 package org.apollo.template.Domain;
 
+import java.util.Date;
+
 /**
  * Data model of auto camper.
  */
 public class Autocamper {
 
     private String chassisNo, registrationNo, brand, comment, type;
-    private int kmCount, noOfRental, weight, length, width, height,
-            noOfBeds, noOfToilets, noOfSeatbelts;
+    private Date purchaseDate;
+    private int kmCount, noOfRental, weight, length, width, height, noOfBeds, noOfToilets, noOfSeatbelts;
     private float mainSeasonPrice, lowSeasonPrice;
 
     public Autocamper(String chassisNo, String registrationNo, String brand, String comment, String type,
@@ -206,6 +208,13 @@ public class Autocamper {
         this.lowSeasonPrice = lowSeasonPrice;
     }
 
+    public java.sql.Date getSQLPurchaseDate() {
+        return (java.sql.Date) purchaseDate;
+    }
+
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
 
     // endregion
 
