@@ -22,20 +22,28 @@ import java.util.ResourceBundle;
 import static org.apollo.template.Service.ListenerUtill.attatchIntegerValidation;
 import static org.apollo.template.Service.TextToImageBind.bindTextToImage;
 
+/**
+ * Controller class for creating Autocampers.
+ */
 public class CreateAutocamperController implements Initializable {
 
+    // initializing text fields.
     @FXML
     private TextField tfRegistrationNo, tfChassisNo, tfBrand, tfKmCount, tfWeight, tfLength, tfWidth, tfHeight,
             tfNoBeds, tfNoSeatBelts, tfNoToilets, tfNoRentals, tfPurchaseDate, tfCamperType,
             tfInSesonPrice, tfOutSesonPrice;
 
+    // initializing ImageView
     @FXML
     ImageView imgRegNo, imgChassisNo, imgBrand, imgKmCount, imgWeight, imgLength, imgWidth, imgHeight, imgNumberOfBeds,
-        imgNumberOfSeatBelts, imgNumberOfToilets, imgNumberOfRentals, imgPurchaseDate, imgInSesonPrice, imgOutSesonPrice,
+            imgNumberOfSeatBelts, imgNumberOfToilets, imgNumberOfRentals, imgPurchaseDate, imgInSesonPrice, imgOutSesonPrice,
             imgCamperType;
 
+    // initializing choise box
     @FXML
     private ChoiceBox<CamperType> cbCamperType;
+
+    // initializing text area
     @FXML
     private TextArea taComment;
 
@@ -50,11 +58,13 @@ public class CreateAutocamperController implements Initializable {
         // loading choose boxes.
         final DAO<CamperType, String> dao = new DAOImplCamperType();
         cbCamperType.getItems().addAll(dao.readAll());
-
     }
 
+    /**
+     * Helper method, used to make initialize method shorter, and hide repetitive
+     * code. Binds text fields to image views for validation feedback.
+     */
     private void bindImageToButton() {
-
         bindTextToImage(tfRegistrationNo, imgRegNo);
         bindTextToImage(tfChassisNo, imgChassisNo);
         bindTextToImage(tfBrand, imgBrand);
@@ -70,13 +80,16 @@ public class CreateAutocamperController implements Initializable {
         bindTextToImage(tfPurchaseDate, imgPurchaseDate);
         bindTextToImage(tfInSesonPrice, imgInSesonPrice);
         bindTextToImage(tfOutSesonPrice, imgOutSesonPrice);
-
     }
 
+    /**
+     * Handles the save button click event. Adds a new autocamper to the database.
+     */
     @FXML
-    protected void onSaveClick(){
+    protected void onSaveClick() {
+        // TODO Add validation for creating an autocamper.
 
-        final Alert ALERT_SUCESS = new Alert(MainController.getInstance(), 3, AlertType.SUCCESS, "auto camper was successfully created!");
+        final Alert ALERT_SUCCESS = new Alert(MainController.getInstance(), 3, AlertType.SUCCESS, "auto camper was successfully created!");
         final Alert ALERT_ERROR = new Alert(MainController.getInstance(), 3, AlertType.ERROR, "The auto camper could not be created");
         final DAO<Autocamper, String> dao = new DaoImplAutoCamper();
 
@@ -98,13 +111,14 @@ public class CreateAutocamperController implements Initializable {
                 Integer.parseInt(tfNoSeatBelts.getText()),
                 Integer.parseInt(tfInSesonPrice.getText()),
                 Integer.parseInt(tfOutSesonPrice.getText())
-                ));
+        ));
+    }
 
-    };
-
+    /**
+     * Handles the cancel button click event. Changes the view back to the home view.
+     */
     @FXML
-    protected void onCancelClick(){
+    protected void onCancelClick() {
         MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
-    };
-
+    }
 }

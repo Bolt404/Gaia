@@ -135,3 +135,4 @@ CREATE TABLE tbl_coDriver(
 	FOREIGN KEY (fld_zipCityID) REFERENCES tbl_zipCity (fld_zipCityID),
 	FOREIGN KEY (fld_rentalID) REFERENCES tbl_rental (fld_rentalID)
 );
+

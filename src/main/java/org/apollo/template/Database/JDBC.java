@@ -22,7 +22,7 @@ public class JDBC {
      * Constructs a JDBC instance and initializes a database connection.
      */
 
-    public JDBC() {
+    private JDBC() {
         setProps();
         createConnection(getProperties());
         instance = this;
