@@ -14,9 +14,14 @@ public enum ViewList {
     MAIN("MainView.fxml", MainController.getInstance()),
 
     /**
-     * Game view.
+     * Create rental view.
      */
-    GAME("GameView.fxml", GameController.getInstance()),
+    CREATERENTAL("CreateRental_Period.fxml", CreateRentalController.getInstance()),
+
+    /**
+     *  Create rental view - customer information
+     */
+    CREATERENTALCUSTOM("CreateRental_Customer.fxml", new CreateRentalCustomController()),
 
     /**
      * Settings view.

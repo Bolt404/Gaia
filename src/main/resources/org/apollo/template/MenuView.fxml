@@ -19,7 +19,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#onBtnHome" text="HOME" />
             <Button mnemonicParsing="false" onAction="#onBtnSettings" text="settings" />
-            <Button mnemonicParsing="false" onAction="#onBtnGame" text="game" />
+            <Button mnemonicParsing="false" onAction="#onBtnGame" text="Create rental" />
          </children>
       </VBox>
       <Button mnemonicParsing="false" onAction="#message" text="MESSAGE" />

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox prefHeight="731.0" prefWidth="996.0">
+         <children>
+            <Label text="Create Rental - Customer information">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" top="20.0" />
+               </VBox.margin></Label>
+            <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="996.0">
+               <children>
+                  <Label text="Choosen period">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <TextField fx:id="txStartDate">
+                     <HBox.margin>
+                        <Insets left="63.0" />
+                     </HBox.margin></TextField>
+                  <Label text="-">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin></Label>
+                  <TextField fx:id="txEndDate">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="956.0">
+               <children>
+                  <Label text="Choosen auto camper">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txAutoCamper" prefHeight="25.0" prefWidth="769.0">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <Label text="Customer information:">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" top="40.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Customer email">
+               <VBox.margin>
+                  <Insets left="20.0" top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txCustomerEmail" prefHeight="25.0" prefWidth="586.0">
+               <VBox.margin>
+                  <Insets bottom="40.0" left="20.0" right="464.0" />
+               </VBox.margin>
+            </TextField>
+            <HBox prefHeight="25.0" prefWidth="996.0">
+               <children>
+                  <Label text="Customer first name">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Customer last name">
+                     <HBox.margin>
+                        <Insets left="125.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="976.0">
+               <children>
+                  <TextField fx:id="txCustomerFirstName" prefHeight="25.0" prefWidth="229.0" />
+                  <TextField fx:id="txCustomerLastName" prefHeight="25.0" prefWidth="263.0">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="976.0">
+               <children>
+                  <Label text="Street">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Country">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="216.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Zipcode">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="230.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="City">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="110.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="976.0">
+               <children>
+                  <TextField fx:id="txCustomerStreet" prefHeight="25.0" prefWidth="241.0" />
+                  <TextField fx:id="txCustomerCountry" prefHeight="25.0" prefWidth="269.0">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txCustomerZipcode">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txCustomerCity" prefHeight="25.0" prefWidth="272.0">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="976.0">
+               <children>
+                  <Label text="Customer phone number">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Customer driver license number">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="97.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="996.0">
+               <children>
+                  <TextField fx:id="txCustomerPhoneNo" prefHeight="25.0" prefWidth="232.0" />
+                  <TextField fx:id="txCustomerDriverLicense" prefHeight="25.0" prefWidth="260.0">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="30.0" left="20.0" />
+               </VBox.margin>
+            </HBox>
+            <Label layoutX="30.0" layoutY="188.0" text="CoDriver information:">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#onButtonAddCoDriver" text="Add coDriver">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="20.0" top="5.0" />
+               </VBox.margin>
+            </Button>
+            <ListView fx:id="listViewCoDrivers" prefHeight="194.0" prefWidth="948.0">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" />
+               </VBox.margin>
+            </ListView>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onButtonBack" prefHeight="25.0" prefWidth="86.0" text="Back">
+                     <HBox.margin>
+                        <Insets bottom="20.0" right="678.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onButtonCancel" prefHeight="25.0" prefWidth="86.0" text="Cancel">
+                     <HBox.margin>
+                        <Insets bottom="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#onButtonConfirm" prefHeight="25.0" prefWidth="86.0" text="Confirm">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children></VBox>
+    </children>
+</AnchorPane>

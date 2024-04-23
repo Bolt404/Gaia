@@ -34,7 +34,7 @@ public class MenuController {
 
     @FXML
     protected void onBtnGame( ) {
-        MainController.getInstance().changeView(ViewList.GAME, BorderPaneRegion.CENTER);
+        MainController.getInstance().changeView(ViewList.CREATERENTAL, BorderPaneRegion.CENTER);
     }
 
     @FXML
