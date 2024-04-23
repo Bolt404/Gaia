@@ -94,10 +94,20 @@ public class GameController implements Initializable {
         return INSTANCE;
     }
 
+    /**
+     * Method for recoloring the background, of all TextFields in a given ArrayList, to a given color.
+     * @param color
+     * @param textFieldArr
+     */
     public static void changeBackgroundColor(Color color, ArrayList<TextField> textFieldArr){
 
         for (TextField textField : textFieldArr) {
             textField.setBackground(Background.fill(color));
+            textField.setStyle("-fx-border-color: -fx-box-border, -fx-inner-border, -fx-body-color;\n" +
+                            "-fx-border-insets: 0;\n" +
+                            "-fx-border-radius: 3;\n" +
+                            "-fx-border-style: solid;\n" +
+                            "-fx-border-width: 1;");
         }
 
     }
