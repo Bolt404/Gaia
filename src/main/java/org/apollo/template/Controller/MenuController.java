@@ -50,6 +50,7 @@ public class MenuController {
 
     public static MenuController getInstance() {
         if (INSTANCE == null) {
+
             INSTANCE = new MenuController();
         }
         return INSTANCE;

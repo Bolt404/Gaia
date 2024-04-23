@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -10,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="776.0" prefWidth="930.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21">
+<ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="845.0" prefWidth="1043.0" vbarPolicy="ALWAYS" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21">
   <content>
-    <AnchorPane prefHeight="703.0" prefWidth="761.0">
+    <AnchorPane prefHeight="820.0" prefWidth="928.0">
          <children>
             <VBox prefHeight="5000.0" prefWidth="5000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -21,15 +23,15 @@
                         <Font size="34.0" />
                      </font>
                   </Label>
-                  <Label text="Autocamper information">
+                  <Label text="Autocamper external information">
                      <font>
-                        <Font size="16.0" />
+                        <Font name="System Bold" size="16.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Label>
-                  <HBox prefHeight="187.0" prefWidth="748.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                  <HBox prefHeight="65.0" prefWidth="908.0" spacing="10.0">
                      <children>
                         <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                            <children>
@@ -57,36 +59,128 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="703.0" prefWidth="1197.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                  <HBox layoutX="10.0" layoutY="115.0" prefHeight="65.0" prefWidth="908.0" spacing="10.0">
                      <children>
-                        <VBox prefHeight="520.0" prefWidth="151.0">
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="weight (KG)" />
-                              <TextField prefHeight="25.0" prefWidth="170.0" />
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="57.0" prefWidth="407.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="length (CM)" />
                               <TextField />
                            </children>
                         </VBox>
-                        <VBox prefHeight="57.0" prefWidth="407.0">
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Width(CM)" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="length (CM) " />
                               <TextField />
                            </children>
                         </VBox>
-                        <VBox prefHeight="57.0" prefWidth="407.0">
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Height(CM)" />
-                              <TextField prefHeight="25.0" prefWidth="129.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Width (CM)" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="height (CM)" />
+                              <TextField />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <Label text="Label" />
-                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <Label layoutX="10.0" layoutY="90.0" text="Autocamper internal information">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <HBox layoutX="10.0" layoutY="115.0" prefHeight="65.0" prefWidth="908.0" spacing="10.0">
+                     <children>
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of beds" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of seatbelts" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of toilets" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Km count" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Label layoutX="10.0" layoutY="245.0" text="Autocamper mis">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <HBox layoutX="10.0" layoutY="270.0" prefHeight="65.0" prefWidth="908.0" spacing="10.0">
+                     <children>
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of rental(s)" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Purchase Date" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Camper type" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="360.0" prefHeight="65.0" prefWidth="908.0" spacing="10.0">
+                     <children>
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In season price (EURO)" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Out season price (EURO)" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Camper type" />
+                              <ChoiceBox prefHeight="25.0" prefWidth="220.0" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="249.0" prefWidth="908.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label text="Comment" />
+                              <TextArea prefHeight="200.0" prefWidth="200.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
