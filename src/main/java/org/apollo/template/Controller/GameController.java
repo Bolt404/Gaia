@@ -75,6 +75,17 @@ public class GameController implements Initializable {
             }
         });
 
+
+        emailTextField.focusedProperty().addListener((observable, oldValue, newValue)->{
+
+            if(!newValue){
+
+
+
+            }
+
+        });
+
         root.getChildren().addAll(emailTextField, textField, textField2);
 
 
