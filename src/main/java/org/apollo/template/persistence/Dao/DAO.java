@@ -1,4 +1,4 @@
-package org.apollo.template.persistence;
+package org.apollo.template.persistence.Dao;
 
 import java.util.List;
 
