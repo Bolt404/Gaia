@@ -1,8 +1,8 @@
-package org.apollo.template.persistence;
+package org.apollo.template.persistence.Dao;
 
 import java.util.List;
 
-public interface DAO <T>{
+public interface DAO <T, I>{
 
     void add(T t);
     void addAll(List<T> list);
@@ -13,7 +13,7 @@ public interface DAO <T>{
     void update(T t);
     void updateAll(List<T> t);
 
-    T read(int id);
+    T read(I i);
     List<T> readAll();
     
 }
