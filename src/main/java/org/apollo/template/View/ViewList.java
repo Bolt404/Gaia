@@ -27,6 +27,7 @@ public enum ViewList {
      * Home view.
      */
     HOME("HomeView.fxml", HomeController.getInstance()),
+    CreateAutocamper("CreateAutocamperView.fxml", new CreateAutocamperController()),
 
     /**
      * Menu view.
