@@ -11,7 +11,6 @@ import org.apollo.template.Service.RentalUtil;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
 import org.apollo.template.Service.Alert.Alert;
-
 import java.net.URL;
 import java.sql.Date;
 import java.util.List;
@@ -28,7 +27,6 @@ public class CreateRentalController implements Initializable{
     @FXML
     private ListView<Autocamper> lvFreeAutoCampers;
 
-
     private Rental rental = MainController.getInstance().rental;
     private List<Autocamper> availableAutocampersPeriod;
 
@@ -41,60 +39,70 @@ public class CreateRentalController implements Initializable{
 
 
 
-    private void setPeriod() {
-        if (dpStartDate.getValue() == null || dpEndDate.getValue() == null){
-            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date and end date");
-            ALERT_INFO.start();
-        }
-        else {
-            rental.setStartDate(Date.valueOf(dpStartDate.getValue()));
-            rental.setEndDate(Date.valueOf(dpEndDate.getValue()));
-        }
-    }
-
-
-    private void setAutoCamper() {
-        if (lvFreeAutoCampers.getSelectionModel().getSelectedItem() == null){
-            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a auto camper");
-            ALERT_INFO.start();
-        }
-        else {
-            rental.setChassisNo(lvFreeAutoCampers.getSelectionModel().getSelectedItem().getChassisNo());
-        }
-    }
-
-
-
-    private static CreateRentalController INSTANCE;
-
-
+    /**
+     * Method for initiating a search for available auto campers. It validates the presence
+     * of start and end dates and either displays an alert if one or both are missing,
+     * or proceeds to find and list available auto campers.
+     */
     public void onBtnSearch(){
-        System.out.println("im in!");
         if (dpStartDate.getValue() == null || dpEndDate.getValue() == null){
             final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date and end date");
             ALERT_INFO.start();
         }
         else {
-            System.out.println("1");
             findAvailableAutoCampers();
-            System.out.println("2");
             listAvailableAutoCampers();
-            System.out.println("3");
         }
     }
 
+
+    /**
+     * Method for handling the cancellation process by navigating back to the home view.
+     */
+    public void onButtonCancel(){
+        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
+    }
+
+
+    /**
+     * Method for confirming selection and proceeding to the rental creation view.
+     * This method sets the rental period and auto camper, and checks if all necessary
+     * information (start date, end date, chassis number) is provided. If any information
+     * is missing, an informational alert is displayed. Otherwise, it transitions to the
+     * rental creation view.
+     */
+    public void onButtonConfirm(){
+        setPeriod();
+        setAutoCamper();
+
+        if (rental.getStartDate() != null && rental.getEndDate() != null && rental.getChassisNo() != null) {
+            MainController.getInstance().changeView(ViewList.CREATERENTALCUSTOM, BorderPaneRegion.CENTER);
+        }
+        else {
+            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Some information is missing.\nPlease check your search criteria");
+            ALERT_INFO.start();
+        }
+    }
+
+
+    /**
+     * Method for finding available auto campers within a specified date range.
+     * It retrieves the start and end dates from the date pickers, then uses
+     * these dates to query available auto campers through the RentalUtil class.
+     */
     private void findAvailableAutoCampers() {
         RentalUtil rentalUtil = new RentalUtil();
 
         Date startDate = Date.valueOf(dpStartDate.getValue());
         Date endDate = Date.valueOf(dpEndDate.getValue());
-        System.out.println(startDate);
-        System.out.println(endDate);
 
         availableAutocampersPeriod = rentalUtil.availableAutocampers(startDate, endDate);
     }
 
 
+    /**
+     * Method for
+     */
     private void listAvailableAutoCampers() {
 
         if (availableAutocampersPeriod == null){
@@ -119,27 +127,38 @@ public class CreateRentalController implements Initializable{
     }
 
 
-    public void onButtonConfirm(){
-        setPeriod();
-        //setAutoCamper();
-
-        if (rental.getStartDate() != null && rental.getEndDate() != null /*&& rental.getChassisNo() != null*/) {
-
-
-            MainController.getInstance().changeView(ViewList.CREATERENTALCUSTOM, BorderPaneRegion.CENTER);
-        }
-        else {
-            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Some information is missing.\nPlease check your search criteria");
+    /**
+     * Method for
+     */
+    private void setPeriod() {
+        if (dpStartDate.getValue() == null || dpEndDate.getValue() == null){
+            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date and end date");
             ALERT_INFO.start();
         }
+        else {
+            rental.setStartDate(Date.valueOf(dpStartDate.getValue()));
+            rental.setEndDate(Date.valueOf(dpEndDate.getValue()));
+        }
     }
 
 
-    public void onButtonCancel(){
-        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
+    /**
+     * Method for
+     */
+    private void setAutoCamper() {
+        if (lvFreeAutoCampers.getSelectionModel().getSelectedItem() == null){
+            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a auto camper");
+            ALERT_INFO.start();
+        }
+        else {
+            rental.setChassisNo(lvFreeAutoCampers.getSelectionModel().getSelectedItem().getChassisNo());
+        }
     }
 
 
+    /**
+     * Method for
+     */
     private void comboBoxSetVal(){
 
         cbType.getItems().addAll("Show all", "Luxury", "Standard", "Basic");
@@ -147,6 +166,11 @@ public class CreateRentalController implements Initializable{
     }
 
 
+
+
+    // Singleton part
+
+    private static CreateRentalController INSTANCE;
 
     private CreateRentalController() {
         if (INSTANCE == null) {

@@ -240,7 +240,7 @@ public class Autocamper {
 
 
     public String toString(){
-        return String.format("%s  -  %s  -  %d  -  %d  -  %.2f  -  %.2f",getType(),getBrand(),getNoOfBeds(),getNoOfSeatbelts(),getMainSeasonPrice(),getLowSeasonPrice());
+        return String.format("%s  -  Brand: %s  -  #Beds: %d  -  #Seatbelts %d  -  Price Main season %.2f €  -  Price Low season %.2f €",getType(),getBrand(),getNoOfBeds(),getNoOfSeatbelts(),getMainSeasonPrice(),getLowSeasonPrice());
     }
 
 }

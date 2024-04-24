@@ -1,21 +1,17 @@
 package org.apollo.template.Controller;
 
-import com.sun.tools.javac.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import org.apollo.template.App;
+import org.apollo.template.Domain.Autocamper;
 import org.apollo.template.Domain.Rental;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
+import org.apollo.template.persistence.Dao.DAO;
+import org.apollo.template.persistence.Dao.DaoImplAutoCamper;
 
 import java.net.URL;
-import java.util.ConcurrentModificationException;
 import java.util.ResourceBundle;
 
 public class CreateRentalCustomController implements Initializable {
@@ -28,6 +24,7 @@ public class CreateRentalCustomController implements Initializable {
     private ListView listViewCoDrivers;
 
     private Rental rental;
+    private DAO<Autocamper, String> autocamperDao;
 
 
 
@@ -48,8 +45,17 @@ public class CreateRentalCustomController implements Initializable {
     }
 
     private void setAutocamper() {
-        txAutoCamper.setText(rental.getChassisNo());
+        Autocamper autocamper = autocamperDao.read(rental.getChassisNo());
+        if (autocamper != null) {
+            txAutoCamper.setText(autocamper.toString());
+        } else {
+            txAutoCamper.setText("Ingen autocamper fundet med chassisnummeret: " + rental.getChassisNo());
+        }
     }
+
+
+
+
 
 
     public void onButtonAddCoDriver(){

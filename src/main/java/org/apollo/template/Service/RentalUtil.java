@@ -29,7 +29,7 @@ public class RentalUtil {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 autocampers.add(dao.read(rs.getString(cnt)));
-               // cnt++;
+
             }
 
         } catch (SQLException e){

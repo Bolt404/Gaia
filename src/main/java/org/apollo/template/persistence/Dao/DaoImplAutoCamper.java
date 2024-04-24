@@ -129,22 +129,22 @@ public class DaoImplAutoCamper implements DAO<Autocamper, String> {
             rs.next();
             DebugMessage.info(this,"READ: Autocamper found.");
             return new Autocamper(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(15),
-                    rs.getString(16),
-                    rs.getString(17),
-                    rs.getInt(3),
-                    rs.getInt(4),
-                    rs.getInt(7),
-                    rs.getInt(8),
-                    rs.getInt(9),
-                    rs.getInt(12),
-                    rs.getInt(13),
-                    rs.getInt(14),
-                    rs.getInt(15),
-                    rs.getFloat(5),
-                    rs.getFloat(6)
+                    rs.getString("fld_chassisNo"),
+                    rs.getString("fld_registrationNo"),
+                    rs.getString("fld_brand"),
+                    rs.getString("fld_comment"),
+                    rs.getString("fld_type"),
+                    rs.getInt("fld_kmCount"),
+                    rs.getInt("fld_noOfRental"),
+                    rs.getInt("fld_weight"),
+                    rs.getInt("fld_length"),
+                    rs.getInt("fld_width"),
+                    rs.getInt("fld_height"),
+                    rs.getInt("fld_noOfBeds"),
+                    rs.getInt("fld_noOfToilets"),
+                    rs.getInt("fld_noOfSeatbelts"),
+                    rs.getFloat("fld_mainSeasonPrice"), // ded
+                    rs.getFloat("fld_lowSeasonPrice")
             );
         } catch (SQLException e){
             DebugMessage.error(this,"READ: Failed to READ Autocamper with " + chassicNo);
