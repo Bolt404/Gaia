@@ -48,6 +48,7 @@ public class DaoImplAutoCamper implements DAO<Autocamper, String> {
 
         } catch (SQLException e) {
             DebugMessage.error(this, "ADD: Failed to add AutoCamper " + e.getMessage());
+            throw new RuntimeException();
         }
     }
 
@@ -151,7 +152,7 @@ public class DaoImplAutoCamper implements DAO<Autocamper, String> {
                     rs.getInt(13), //noOfWC
                     rs.getInt(14), //NoSeatBelts
                     rs.getFloat(5), //HighSeason
-                    rs.getFloat(6) //LowSeason
+                    rs.getFloat(6), //LowSeason
                     rs.getDate(18)
 
             );

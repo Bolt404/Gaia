@@ -46,7 +46,7 @@ public class CreateAutocamperController implements Initializable {
     @FXML
     private DatePicker dpPurchaseDate;
 
-    // initializing choise box
+    // initializing choose box
     @FXML
     private ChoiceBox<CamperType> cbCamperType;
 
@@ -131,7 +131,12 @@ public class CreateAutocamperController implements Initializable {
                 );
 
 
-        dao.add(autocamper);
+        try {
+            dao.add(autocamper);
+        } catch (RuntimeException e){
+            ALERT_ERROR.start();
+            return;
+        }
 
         ALERT_SUCCESS.start();
 
