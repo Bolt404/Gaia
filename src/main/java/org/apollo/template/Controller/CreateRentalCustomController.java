@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 
 public class CreateRentalCustomController implements Initializable {
 
+
     @FXML
     private TextField txStartDate, txEndDate, txAutoCamper, txCustomerEmail, txCustomerFirstName, txCustomerLastName,
                       txCustomerStreet, txCustomerCountry, txCustomerZipcode, txCustomerCity, txCustomerPhoneNo, txCustomerDriverLicense;

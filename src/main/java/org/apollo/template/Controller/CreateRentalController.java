@@ -1,18 +1,14 @@
 package org.apollo.template.Controller;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
 import org.apollo.template.Service.Debugger.DebugMessage;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
 
 import java.net.URL;
-import java.util.List;
+import java.sql.Date;
 import java.util.ResourceBundle;
 
 
@@ -23,17 +19,29 @@ public class CreateRentalController implements Initializable{
     private DatePicker dpStartDate, dpEndDate;
     @FXML
     private ComboBox cbType;
-
-    /*
-        public List<Resturent> loadAllResturents(){
-
-            resturentDAO = new ResturenDAODB();
-            return resturentDAO.readall();
-        }
-
-         */
     @FXML
     private ListView lvFreeAutoCampers;
+
+
+    private Date startDate;
+
+    public String getStartDate() {
+        return startDate.toString();
+    }
+
+    public void setStartDate() {
+        this.startDate = Date.valueOf(dpStartDate.getValue());
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    private Date endDate;
 
 
 
@@ -41,6 +49,10 @@ public class CreateRentalController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         comboBoxSetVal();
+
+
+
+
     }
 
     private static CreateRentalController INSTANCE;
