@@ -125,8 +125,9 @@ public class DaoImplCustomer implements DAO<Customer, String>{
                     rs.getString(5),
                     rs.getString(6),
                     rs.getString(7),
-                    rs.getInt(8),
-                    rs.getInt(9)
+                    rs.getString(8),
+                    rs.getInt(9),
+                    rs.getInt(10)
             );
 
         }catch (SQLException e){

@@ -63,7 +63,7 @@ public class CreateRentalController implements Initializable{
     }
 
     public void onButtonCancel(){
-        MainController.getInstance().changeView(ViewList.MENU, BorderPaneRegion.CENTER);
+        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
     }
 
 

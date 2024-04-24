@@ -3,11 +3,17 @@ package org.apollo.template.Domain;
 public class Customer {
 
     private String customerID, customerFirstName, customerLastName, customerPhoneNumber;
-    private String customerEmail, customerDrivingLicenceNo, customerAddress;
+    private String customerEmail;
+    private String customerDrivingLicenceNo;
+    private String customerAddress;
+
+
+
+    private String customerCountry;
     private int zipCity, noOfRentals;
 
     public Customer(String customerID, String customerFirstName, String customerLastName, String customerPhoneNumber,
-                    String customerEmail, String customerDrivingLicenceNo, String customerAddress,
+                    String customerEmail, String customerDrivingLicenceNo, String customerAddress, String customerCountry,
                     int zipCity, int noOfRentals){
 
         setCustomerID(customerID);
@@ -17,6 +23,7 @@ public class Customer {
         setCustomerEmail(customerEmail);
         setCustomerDrivingLicenceNo(customerDrivingLicenceNo);
         setCustomerAddress(customerAddress);
+        setCustomerCountry(customerCountry);
         setZipCity(zipCity);
         setNoOfRentals(noOfRentals);
 
@@ -79,6 +86,10 @@ public class Customer {
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
     }
+
+    public String getCustomerCountry() { return customerCountry; }
+
+    public void setCustomerCountry(String customerCountry) { this.customerCountry = customerCountry;}
 
     public int getZipCity() {
         return zipCity;
