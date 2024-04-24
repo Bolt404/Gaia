@@ -29,8 +29,7 @@ public class MainController implements Initializable, Alertable<VBox> {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        changeView(ViewList.HOME, BorderPaneRegion.CENTER);
-        changeView(ViewList.MENU, BorderPaneRegion.RIGHT);
+        changeView(ViewList.LOGIN, BorderPaneRegion.CENTER);
     }
 
     /**
@@ -46,6 +45,18 @@ public class MainController implements Initializable, Alertable<VBox> {
             case RIGHT -> borderPane.setRight(loadView(viewList));
             case BOTTOM -> borderPane.setBottom(loadView(viewList));
             case CENTER -> borderPane.setCenter(loadView(viewList));
+        }
+
+    }
+
+    public void removeView (BorderPaneRegion borderPaneRegion){
+
+        switch (borderPaneRegion){
+            case LEFT -> borderPane.setLeft(null);
+            case RIGHT -> borderPane.setRight(null);
+            case TOP -> borderPane.setTop(null);
+            case BOTTOM -> borderPane.setBottom(null);
+            case CENTER -> borderPane.setCenter(null);
         }
 
     }

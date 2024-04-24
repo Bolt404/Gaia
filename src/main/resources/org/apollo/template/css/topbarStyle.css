@@ -1,0 +1,19 @@
+/*
+
+    MAIN: #51B351
+    TEXT: #FFFFFF
+
+ */
+
+#SidebareButton{
+    -fx-background-color: TRANSPARENT;
+}
+
+#titelText {
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: TRANSPARENT;
+}
+
+#parent {
+    -fx-background-color: #51B351;
+}
