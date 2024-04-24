@@ -4,21 +4,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import org.apollo.template.Database.JDBC;
 import org.apollo.template.Domain.Customer;
+import org.apollo.template.Service.CustomerUtil;
 import org.apollo.template.Service.Debugger.DebugMessage;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
+import org.apollo.template.persistence.Dao.DaoImplCustomer;
 
 import java.net.URL;
-import java.sql.*;
 import java.util.ResourceBundle;
 
 public class EditCustomerController implements Initializable {
 
-    private static Connection con = JDBC.get().getConnection();
-    @FXML
-    private AnchorPane baseAnchorPane;
+    private Customer customer;
     @FXML
     TextField txCustomerEmail, txCustomerFirstName, txCustomerLastName, txCustomerStreet, txCustomerCountry,
             txCustomerZipcode, txCustomerCity, txCustomerPhoneNo, txCustomerDriverLicense;
@@ -26,14 +24,10 @@ public class EditCustomerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-//        if(!txCustomerEmail.focusedProperty().getValue() && txCustomerEmail.getText() != null){
-//            getCustomerInformationFromEmail(txCustomerEmail.getText());
-//        }
-
         txCustomerEmail.focusedProperty().addListener((obs, oldVal, newVal) ->{
             if(!newVal){
 
-                Customer customer = getCustomerInformationFromEmail(txCustomerEmail.getText());
+                customer = CustomerUtil.getCustomerInformationFromEmail(txCustomerEmail.getText());
                 if(customer != null){
                     txCustomerFirstName.setText(customer.getCustomerFirstName());
                     txCustomerLastName.setText(customer.getCustomerLastName());
@@ -65,41 +59,39 @@ public class EditCustomerController implements Initializable {
     @FXML
     public void onButtonEditUpdate(){
 
-    }
+        if(customer != null){
+            String str = txCustomerZipcode.getText();
 
+            try {
+                int zipCity = Integer.parseInt(str);
+                customer.setZipCity(zipCity);
 
-    private static Customer getCustomerInformationFromEmail(String email){
+                customer.setCustomerFirstName(txCustomerFirstName.getText());
+                customer.setCustomerLastName(txCustomerLastName.getText());
+                customer.setCustomerPhoneNumber(txCustomerPhoneNo.getText());
+                customer.setCustomerEmail(txCustomerEmail.getText());
+                customer.setCustomerDrivingLicenceNo(txCustomerDriverLicense.getText());
+                customer.setCustomerAddress(txCustomerStreet.getText());
+                customer.setCustomerCountry(txCustomerCountry.getText());
 
-        try {
-            PreparedStatement ps = con.prepareCall("SELECT * FROM tbl_customer WHERE fld_customerEmail = ?");
+                System.out.println(txCustomerFirstName.getText());
+                System.out.println(txCustomerLastName.getText());
+                System.out.println(txCustomerPhoneNo.getText());
+                System.out.println(txCustomerEmail.getText());
+                System.out.println(txCustomerDriverLicense.getText());
+                System.out.println(txCustomerStreet.getText());
+                System.out.println(txCustomerZipcode.getText());
 
-            ps.setString(1, email);
-            System.out.println(ps);
-            ResultSet rs = ps.executeQuery();
+                DaoImplCustomer dao = new DaoImplCustomer();
 
-            String firstName = rs.getString(1);
-            if (firstName == null) {
-                return null; // No customer found for the given email
+                dao.update(customer);
+
+            } catch (NumberFormatException e) {
+                DebugMessage.error(new EditCustomerController(), "onButtonEditUpdate; ZipCity was invalid");
             }
-
-            return new Customer(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4),
-                    rs.getString(5),
-                    rs.getString(6),
-                    rs.getString(7),
-                    rs.getString(8),
-                    rs.getInt(9),
-                    rs.getInt(10)
-            );
-
-        }catch (SQLException e){
-            DebugMessage.error(new EditCustomerController(), "GetCustomerInformationFromEmail: Failed!");
         }
 
-        return null;
+        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
     }
 
     public static EditCustomerController getInstance() {
