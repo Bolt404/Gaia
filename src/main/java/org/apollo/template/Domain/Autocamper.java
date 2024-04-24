@@ -3,7 +3,9 @@ package org.apollo.template.Domain;
 import java.util.Date;
 
 /**
- * Data model of auto camper.
+ * Represents a model for an autocamper (motorhome or RV).
+ * An autocamper is a type of vehicle designed for living accommodations,
+ * typically including sleeping quarters, kitchen facilities, and a bathroom.
  */
 public class Autocamper {
 
@@ -12,15 +14,34 @@ public class Autocamper {
     private int kmCount, noOfRental, weight, length, width, height, noOfBeds, noOfToilets, noOfSeatbelts;
     private float mainSeasonPrice, lowSeasonPrice;
 
+    /**
+     * Constructs an autocamper object with specified parameters.
+     * @param chassisNo The chassis number of the autocamper.
+     * @param registrationNo The registration number of the autocamper.
+     * @param brand The brand of the autocamper.
+     * @param comment Any additional comments about the autocamper.
+     * @param type The type of the autocamper.
+     * @param kmCount The mileage count of the autocamper.
+     * @param noOfRental The number of times the autocamper has been rented.
+     * @param weight The weight of the autocamper.
+     * @param length The length of the autocamper.
+     * @param width The width of the autocamper.
+     * @param height The height of the autocamper.
+     * @param noOfBeds The number of beds in the autocamper.
+     * @param noOfToilets The number of toilets in the autocamper.
+     * @param noOfSeatbelts The number of seat belts in the autocamper.
+     * @param mainSeasonPrice The price of renting the autocamper in the main season.
+     * @param lowSeasonPrice The price of renting the autocamper in the low season.
+     */
     public Autocamper(String chassisNo, String registrationNo, String brand, String comment, String type,
                       int kmCount, int noOfRental, int weight, int length, int width, int height,
-                      int noOfBeds, int noOfToilets, int noOfSeatbelts, float mainSeasonPrice, float lowSeasonPrice) {
+                      int noOfBeds, int noOfToilets, int noOfSeatbelts, float mainSeasonPrice, float lowSeasonPrice, Date purchaseDate) {
 
         setChassisNo(chassisNo);
         setRegistrationNo(registrationNo);
         setBrand(brand);
         setComment(comment);
-        setType(type);
+
         setKmCount(kmCount);
         setNoOfRental(noOfRental);
         setWeight(weight);
@@ -32,6 +53,9 @@ public class Autocamper {
         setNoOfSeatbelts(noOfSeatbelts);
         setMainSeasonPrice(mainSeasonPrice);
         setLowSeasonPrice(lowSeasonPrice);
+
+        setType(type);
+        setPurchaseDate(purchaseDate);
 
     }
 
@@ -67,6 +91,10 @@ public class Autocamper {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Date getPurchaseDate() {
+        return purchaseDate;
     }
 
     public String getType() {
@@ -209,7 +237,7 @@ public class Autocamper {
     }
 
     public java.sql.Date getSQLPurchaseDate() {
-        return (java.sql.Date) purchaseDate;
+        return new java.sql.Date(purchaseDate.getTime());
     }
 
     public void setPurchaseDate(Date purchaseDate) {
