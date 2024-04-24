@@ -1,6 +1,5 @@
 package org.apollo.template.persistence.Dao;
 
-import javafx.geometry.NodeOrientation;
 import org.apollo.template.Database.JDBC;
 import org.apollo.template.Domain.Customer;
 import org.apollo.template.Service.Debugger.DebugMessage;
@@ -9,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DaoImplCustomer implements DAO<Customer, String>{
@@ -138,6 +138,18 @@ public class DaoImplCustomer implements DAO<Customer, String>{
 
     @Override
     public List<Customer> readAll() {
-        return null;
+
+        ArrayList<Customer> customerArrayList = new ArrayList<>();
+        try{
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM  tbl_customer");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                customerArrayList.add(this.read(rs.getString(1)));
+            }
+        }catch (SQLException e){
+            DebugMessage.error(this, "READALL; Failed to READ all");
+        }
+
+        return customerArrayList;
     }
 }
