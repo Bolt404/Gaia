@@ -35,6 +35,10 @@ public enum ViewList {
     CreateAutocamper("CreateAutocamperView.fxml", new CreateAutocamperController()),
 
     /**
+     * Edit Customer View
+     */
+    EDITCUSTOMER("CustomerEdit.fxml", EditCustomerController.getInstance()),
+    /**
      * Menu view.
      */
     MENU("MenuView.fxml", MenuController.getInstance());
