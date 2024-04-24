@@ -47,9 +47,8 @@ public class DaoImplAutoCamper implements DAO<Autocamper, String> {
     @Override
     public void addAll(List<Autocamper> listAutoCampers) {
         for (Autocamper autoCamper : listAutoCampers) {
-            this.add((Autocamper) autoCamper);
+            this.add(autoCamper);
         }
-
     }
 
     @Override
@@ -129,22 +128,22 @@ public class DaoImplAutoCamper implements DAO<Autocamper, String> {
             rs.next();
             DebugMessage.info(this,"READ: Autocamper found.");
             return new Autocamper(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(15),
-                    rs.getString(16),
-                    rs.getString(17),
-                    rs.getInt(3),
-                    rs.getInt(4),
-                    rs.getInt(7),
-                    rs.getInt(8),
-                    rs.getInt(9),
-                    rs.getInt(12),
-                    rs.getInt(13),
-                    rs.getInt(14),
-                    rs.getInt(15),
-                    rs.getFloat(5),
-                    rs.getFloat(6)
+                    rs.getString(1), //ChassiNo
+                    rs.getString(2), //RegistrationNo
+                    rs.getString(15), //Brand
+                    rs.getString(16), //Comment
+                    rs.getString(17), //Type
+                    rs.getInt(3), //Km
+                    rs.getInt(4), //NoRental
+                    rs.getInt(7), //Weight
+                    rs.getInt(8), //Length
+                    rs.getInt(9), //width
+                    rs.getInt(10), //height
+                    rs.getInt(12), //noOfBed
+                    rs.getInt(13), //noOfWC
+                    rs.getInt(14), //NoSeatBelts
+                    rs.getFloat(5), //HighSeason
+                    rs.getFloat(6) //LowSeason
             );
         } catch (SQLException e){
             DebugMessage.error(this,"READ: Failed to READ Autocamper with " + chassicNo);
