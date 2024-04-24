@@ -35,13 +35,13 @@ public class Autocamper {
      */
     public Autocamper(String chassisNo, String registrationNo, String brand, String comment, String type,
                       int kmCount, int noOfRental, int weight, int length, int width, int height,
-                      int noOfBeds, int noOfToilets, int noOfSeatbelts, float mainSeasonPrice, float lowSeasonPrice) {
+                      int noOfBeds, int noOfToilets, int noOfSeatbelts, float mainSeasonPrice, float lowSeasonPrice, Date purchaseDate) {
 
         setChassisNo(chassisNo);
         setRegistrationNo(registrationNo);
         setBrand(brand);
         setComment(comment);
-        setType(type);
+
         setKmCount(kmCount);
         setNoOfRental(noOfRental);
         setWeight(weight);
@@ -53,6 +53,9 @@ public class Autocamper {
         setNoOfSeatbelts(noOfSeatbelts);
         setMainSeasonPrice(mainSeasonPrice);
         setLowSeasonPrice(lowSeasonPrice);
+
+        setType(type);
+        setPurchaseDate(purchaseDate);
 
     }
 
@@ -88,6 +91,10 @@ public class Autocamper {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Date getPurchaseDate() {
+        return purchaseDate;
     }
 
     public String getType() {
@@ -230,7 +237,7 @@ public class Autocamper {
     }
 
     public java.sql.Date getSQLPurchaseDate() {
-        return (java.sql.Date) purchaseDate;
+        return new java.sql.Date(purchaseDate.getTime());
     }
 
     public void setPurchaseDate(Date purchaseDate) {

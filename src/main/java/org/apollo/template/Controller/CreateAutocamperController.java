@@ -3,6 +3,7 @@ package org.apollo.template.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -10,6 +11,7 @@ import org.apollo.template.Domain.Autocamper;
 import org.apollo.template.Domain.CamperType;
 import org.apollo.template.Service.Alert.Alert;
 import org.apollo.template.Service.Alert.AlertType;
+import org.apollo.template.Service.DateTimeUtill;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
 import org.apollo.template.persistence.Dao.DAO;
@@ -17,10 +19,13 @@ import org.apollo.template.persistence.Dao.DAOImplCamperType;
 import org.apollo.template.persistence.Dao.DaoImplAutoCamper;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import static org.apollo.template.Service.JavaFxControlerToImageViewBind.*;
 import static org.apollo.template.Service.ListenerUtill.attatchIntegerValidation;
-import static org.apollo.template.Service.TextToImageBind.bindTextToImage;
 
 /**
  * Controller class for creating Autocampers.
@@ -30,14 +35,16 @@ public class CreateAutocamperController implements Initializable {
     // initializing text fields.
     @FXML
     private TextField tfRegistrationNo, tfChassisNo, tfBrand, tfKmCount, tfWeight, tfLength, tfWidth, tfHeight,
-            tfNoBeds, tfNoSeatBelts, tfNoToilets, tfNoRentals, tfPurchaseDate, tfCamperType,
-            tfInSesonPrice, tfOutSesonPrice;
+            tfNoBeds, tfNoSeatBelts, tfNoToilets, tfNoRentals, tfInSesonPrice, tfOutSesonPrice;
 
     // initializing ImageView
     @FXML
-    ImageView imgRegNo, imgChassisNo, imgBrand, imgKmCount, imgWeight, imgLength, imgWidth, imgHeight, imgNumberOfBeds,
+    private ImageView imgRegNo, imgChassisNo, imgBrand, imgKmCount, imgWeight, imgLength, imgWidth, imgHeight, imgNumberOfBeds,
             imgNumberOfSeatBelts, imgNumberOfToilets, imgNumberOfRentals, imgPurchaseDate, imgInSesonPrice, imgOutSesonPrice,
             imgCamperType;
+
+    @FXML
+    private DatePicker dpPurchaseDate;
 
     // initializing choise box
     @FXML
@@ -49,8 +56,10 @@ public class CreateAutocamperController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         // setting up textfield props.
-        attatchIntegerValidation(tfKmCount, tfWeight, tfLength, tfWeight, tfHeight, tfNoBeds, tfNoSeatBelts, tfNoToilets);
+        attatchIntegerValidation(tfKmCount, tfWeight, tfLength, tfWeight, tfHeight, tfNoBeds, tfNoSeatBelts,
+                tfNoToilets, tfInSesonPrice, tfOutSesonPrice);
 
         // binding images to buttons
         bindImageToButton();
@@ -77,9 +86,11 @@ public class CreateAutocamperController implements Initializable {
         bindTextToImage(tfNoSeatBelts, imgNumberOfSeatBelts);
         bindTextToImage(tfNoToilets, imgNumberOfToilets);
         bindTextToImage(tfNoRentals, imgNumberOfRentals);
-        bindTextToImage(tfPurchaseDate, imgPurchaseDate);
         bindTextToImage(tfInSesonPrice, imgInSesonPrice);
         bindTextToImage(tfOutSesonPrice, imgOutSesonPrice);
+
+        bindDatePickerToImage(dpPurchaseDate, imgPurchaseDate);
+        bindChoiseBoxToImage(cbCamperType, imgCamperType);
     }
 
     /**
@@ -93,12 +104,17 @@ public class CreateAutocamperController implements Initializable {
         final Alert ALERT_ERROR = new Alert(MainController.getInstance(), 3, AlertType.ERROR, "The auto camper could not be created");
         final DAO<Autocamper, String> dao = new DaoImplAutoCamper();
 
-        dao.add(new Autocamper(tfChassisNo.getText(),
+        // checking if all requirements are for field.
+        if (!validateCamperCreation()){
+            ALERT_ERROR.start();
+            return;
+        }
+
+        Autocamper autocamper = new Autocamper(tfChassisNo.getText(),
                 tfRegistrationNo.getText(),
                 tfBrand.getText(),
                 taComment.getText(),
-                cbCamperType.getTypeSelector(),
-
+                cbCamperType.getSelectionModel().getSelectedItem().getType(),
                 Integer.parseInt(tfKmCount.getText()),
                 Integer.parseInt(tfNoRentals.getText()),
                 Integer.parseInt(tfWeight.getText()),
@@ -110,8 +126,32 @@ public class CreateAutocamperController implements Initializable {
                 Integer.parseInt(tfNoToilets.getText()),
                 Integer.parseInt(tfNoSeatBelts.getText()),
                 Integer.parseInt(tfInSesonPrice.getText()),
-                Integer.parseInt(tfOutSesonPrice.getText())
-        ));
+                Integer.parseInt(tfOutSesonPrice.getText()),
+                DateTimeUtill.LocalTimeToDate(dpPurchaseDate.getValue())
+                );
+
+
+        dao.add(autocamper);
+
+        ALERT_SUCCESS.start();
+
+    }
+
+    private boolean validateCamperCreation() {
+
+        final TextField[] textFields = new TextField[]{
+                tfRegistrationNo, tfChassisNo, tfBrand, tfKmCount, tfWeight, tfLength, tfWidth, tfHeight,
+                tfNoBeds, tfNoSeatBelts, tfNoToilets, tfNoRentals, tfInSesonPrice, tfOutSesonPrice
+        };
+
+        for (TextField textField : textFields) {
+            if (textField.getText().isEmpty()) return false;
+        }
+
+        return true;
+
+
+
     }
 
     /**

@@ -19,6 +19,9 @@ public class CamperType {
         this.type = type;
         this.typeDescription = typeDescription;
     }
+    public CamperType(String type) {
+        this.type = type;
+    }
 
     /**
      * Retrieves the type of the camper.

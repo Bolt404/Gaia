@@ -2,6 +2,7 @@ package org.apollo.template.persistence.Dao;
 
 import org.apollo.template.Database.JDBC;
 import org.apollo.template.Domain.Autocamper;
+import org.apollo.template.Domain.CamperType;
 import org.apollo.template.Service.Debugger.DebugMessage;
 
 import java.sql.Connection;
@@ -17,11 +18,15 @@ public class DaoImplAutoCamper implements DAO<Autocamper, String> {
     @Override
     public void add(Autocamper autoCamper) {
         try{
-            PreparedStatement ps = con.prepareStatement("INSERT INTO tbl_autocamper ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO tbl_autocamper (fld_chassisNo, fld_registrationNo, fld_kmCount," +
+                    "fld_noOfRental, fld_mainSeasonPrice, fld_lowSeasonPrice, fld_weight, fld_length, fld_width, fld_height, " +
+                    "fld_purchaseDate, fld_noOfBeds, fld_noOfToilets, fld_noOfSeatbelts, fld_brand, fld_comment, fld_type) VALUES " +
+                    "( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
+
             ps.setString(1, autoCamper.getChassisNo());
             ps.setString(2, autoCamper.getRegistrationNo());
             ps.setInt(3,autoCamper.getKmCount());
-            ps.setInt(4,0);
+            ps.setInt(4,autoCamper.getNoOfRental());
             ps.setFloat(5,autoCamper.getMainSeasonPrice());
             ps.setFloat(6,autoCamper.getLowSeasonPrice());
             ps.setInt(7,autoCamper.getWeight());
@@ -36,11 +41,13 @@ public class DaoImplAutoCamper implements DAO<Autocamper, String> {
             ps.setString(16,autoCamper.getComment());
             ps.setString(17,autoCamper.getType());
 
-            DebugMessage.info(this,"ADD: Successfully added new AutoCamper.");
             ps.executeUpdate();
 
+            DebugMessage.info(this,"ADD: Successfully added new AutoCamper.");
+
+
         } catch (SQLException e) {
-            DebugMessage.error(this, "ADD: Failed to add AutoCamper");
+            DebugMessage.error(this, "ADD: Failed to add AutoCamper " + e.getMessage());
         }
     }
 
@@ -133,7 +140,9 @@ public class DaoImplAutoCamper implements DAO<Autocamper, String> {
                     rs.getString(2),
                     rs.getString(15),
                     rs.getString(16),
+
                     rs.getString(17),
+
                     rs.getInt(3),
                     rs.getInt(4),
                     rs.getInt(7),
@@ -144,7 +153,8 @@ public class DaoImplAutoCamper implements DAO<Autocamper, String> {
                     rs.getInt(14),
                     rs.getInt(15),
                     rs.getFloat(5),
-                    rs.getFloat(6)
+                    rs.getFloat(6),
+                    rs.getDate(18)
             );
         } catch (SQLException e){
             DebugMessage.error(this,"READ: Failed to READ Autocamper with " + chassicNo);

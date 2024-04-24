@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
@@ -14,7 +15,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <content>
@@ -245,7 +245,7 @@
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Purchase Date" />
                               <HBox>
                                  <children>
-                                       <TextField fx:id="tfPurchaseDate" />
+                                    <DatePicker fx:id="dpPurchaseDate" />
                                     <ImageView fx:id="imgPurchaseDate" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@images/TempLogo_Shadow.png" />
@@ -322,7 +322,7 @@
                            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                               <children>
                                  <Label text="Comment" />
-                                 <TextArea prefHeight="200.0" prefWidth="200.0" promptText="taComment" />
+                                 <TextArea fx:id="taComment" prefHeight="191.0" prefWidth="888.0" VBox.vgrow="ALWAYS" />
                               <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#onSaveClick" text="Save" />
