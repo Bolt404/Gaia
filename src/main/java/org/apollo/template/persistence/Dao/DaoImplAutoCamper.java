@@ -130,34 +130,37 @@ public class DaoImplAutoCamper implements DAO<Autocamper, String> {
 
     @Override
     public Autocamper read(String chassicNo) {
-        try{
-           PreparedStatement ps = con.prepareStatement("SELECT * FROM tbl_autocamper WHERE fld_chassisNo = ?");
-           ps.setString(1, chassicNo);
+        try {
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM tbl_autocamper WHERE fld_chassisNo = ?");
+            ps.setString(1, chassicNo);
             ResultSet rs = ps.executeQuery();
-            rs.next();
-            DebugMessage.info(this,"READ: Autocamper found.");
-            return new Autocamper(
-                    rs.getString(1), //ChassiNo
-                    rs.getString(2), //RegistrationNo
-                    rs.getString(15), //Brand
-                    rs.getString(16), //Comment
-                    rs.getString(17), //Type
-                    rs.getInt(3), //Km
-                    rs.getInt(4), //NoRental
-                    rs.getInt(7), //Weight
-                    rs.getInt(8), //Length
-                    rs.getInt(9), //width
-                    rs.getInt(10), //height
-                    rs.getInt(12), //noOfBed
-                    rs.getInt(13), //noOfWC
-                    rs.getInt(14), //NoSeatBelts
-                    rs.getFloat(5), //HighSeason
-                    rs.getFloat(6), //LowSeason
-                    rs.getDate(18)
 
-            );
-        } catch (SQLException e){
-            DebugMessage.error(this,"READ: Failed to READ Autocamper with " + chassicNo);
+            // Check if there are any results
+            if (rs.next()) {
+                return new Autocamper(
+                        rs.getString("fld_chassisNo"),
+                        rs.getString("fld_registrationNo"),
+                        rs.getString("fld_brand"),
+                        rs.getString("fld_comment"),
+                        rs.getString("fld_type"),
+                        rs.getInt("fld_kmCount"),
+                        rs.getInt("fld_noOfRental"),
+                        rs.getInt("fld_weight"),
+                        rs.getInt("fld_length"),
+                        rs.getInt("fld_width"),
+                        rs.getInt("fld_height"),
+                        rs.getInt("fld_noOfBeds"),
+                        rs.getInt("fld_noOfToilets"),
+                        rs.getInt("fld_noOfSeatBelts"),
+                        rs.getFloat("fld_mainSeasonPrice"),
+                        rs.getFloat("fld_lowSeasonPrice"),
+                        rs.getDate("fld_purchaseDate")
+                );
+            } else {
+                DebugMessage.error(this, "READ: No Autocamper found with chassicNo " + chassicNo);
+            }
+        } catch (SQLException e) {
+            DebugMessage.error(this, "READ: Failed to READ Autocamper with chassicNo " + chassicNo + ". Error: " + e.getMessage());
         }
         return null;
     }

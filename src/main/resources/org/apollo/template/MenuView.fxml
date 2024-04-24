@@ -24,5 +24,6 @@
       </VBox>
       <Button mnemonicParsing="false" onAction="#message" text="MESSAGE" />
       <Button mnemonicParsing="false" onAction="#onBtnCreateAutocamper" text="Create autocamper" />
+      <Button mnemonicParsing="false" onAction="#onBtnViewAutocampers" text="View All autocampers" />
    </children>
 </VBox>

@@ -264,5 +264,15 @@ public class Autocamper {
         return floatingPointNumber > 0;
     }
 
-
+    @Override
+    public String toString() {
+        return  "RegistrationNO'" + registrationNo + '\'' +
+                ", type='" + type + '\'' +
+                ", noOfBeds=" + noOfBeds +
+                ", noOfToilets=" + noOfToilets +
+                ", noOfSeatbelts=" + noOfSeatbelts +
+                ", mainSeasonPrice=" + mainSeasonPrice +
+                ", lowSeasonPrice=" + lowSeasonPrice +
+                '}';
+    }
 }

@@ -48,6 +48,11 @@ public class MenuController {
         MainController.getInstance().changeView(ViewList.CreateAutocamper, BorderPaneRegion.CENTER);
     }
 
+    @FXML
+    protected void onBtnViewAutocampers(){
+        MainController.getInstance().changeView(ViewList.ViewAutoCampers, BorderPaneRegion.CENTER);
+    }
+
     public static MenuController getInstance() {
         if (INSTANCE == null) {
 
