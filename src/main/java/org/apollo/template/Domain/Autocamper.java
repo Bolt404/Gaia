@@ -12,6 +12,8 @@ public class Autocamper {
     private int kmCount, noOfRental, weight, length, width, height, noOfBeds, noOfToilets, noOfSeatbelts;
     private float mainSeasonPrice, lowSeasonPrice;
 
+    public Autocamper(){}
+
     public Autocamper(String chassisNo, String registrationNo, String brand, String comment, String type,
                       int kmCount, int noOfRental, int weight, int length, int width, int height,
                       int noOfBeds, int noOfToilets, int noOfSeatbelts, float mainSeasonPrice, float lowSeasonPrice) {
@@ -236,5 +238,9 @@ public class Autocamper {
         return floatingPointNumber > 0;
     }
 
+
+    public String toString(){
+        return String.format("%s  -  %s  -  %d  -  %d  -  %.2f  -  %.2f",getType(),getBrand(),getNoOfBeds(),getNoOfSeatbelts(),getMainSeasonPrice(),getLowSeasonPrice());
+    }
 
 }

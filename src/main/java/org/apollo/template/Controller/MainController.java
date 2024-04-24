@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import org.apollo.template.Domain.Rental;
 import org.apollo.template.Service.Alert.AlertComp;
 import org.apollo.template.Service.Alert.Alertable;
 import org.apollo.template.Service.Debugger.DebugMessage;
@@ -26,7 +27,7 @@ public class MainController implements Initializable, Alertable<VBox> {
     private BorderPane borderPane;
     @FXML
     private VBox VBAlert;
-
+    public Rental rental = new Rental();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         changeView(ViewList.HOME, BorderPaneRegion.CENTER);
