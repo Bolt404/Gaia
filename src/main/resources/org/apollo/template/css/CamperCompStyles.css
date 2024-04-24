@@ -1,0 +1,43 @@
+#CamperComp{
+    -fx-background-color: White;
+}
+
+#licencePlate {
+    -fx-font-size: 24;
+}
+
+#luxusLable, #regular, #basic{
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+
+
+}
+
+#ClassificationLabel {
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+}
+
+#classificationHbox {
+    -fx-border-color: BLACK;
+}
+
+#vboxClassification{
+    -fx-border-color: BLACK;
+}
+
+#specification {
+    -fx-font-size: 24;
+}
+
+#specificationHbox {
+    -fx-border-color: BLACK;
+}
+
+#specificationVbox {
+    -fx-border-color: BLACK
+}
+
+#alignedRight {
+    -fx-content-display: right;
+}

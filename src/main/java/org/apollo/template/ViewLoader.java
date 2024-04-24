@@ -5,6 +5,7 @@ import org.apollo.template.Service.Debugger.DebugMessage;
 import org.apollo.template.View.ViewList;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class ViewLoader {
 
@@ -30,7 +31,8 @@ public class ViewLoader {
             return loader.load(); // Returns anchor pane.
 
         } catch (IOException e) {
-            DebugMessage.error("ViewLoader","Error loading FXML view: " + fxmlFileName + " " + e.getMessage() + e.getStackTrace());
+            DebugMessage.error("ViewLoader","Error loading FXML view: " + fxmlFileName + " " + e.getMessage() + Arrays.toString(e.getStackTrace()));
+            e.getStackTrace();
             return null;
         }
     }

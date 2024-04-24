@@ -1,7 +1,7 @@
 package org.apollo.template.persistence.Dao;
 
 import org.apollo.template.Database.JDBC;
-import org.apollo.template.Domain.Customer;
+import org.apollo.template.Domain.Rental.Customer;
 import org.apollo.template.Service.Debugger.DebugMessage;
 
 import java.sql.Connection;
