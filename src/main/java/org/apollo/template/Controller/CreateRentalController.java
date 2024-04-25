@@ -49,20 +49,24 @@ public class CreateRentalController implements Initializable{
      * the method proceeds to find and list available auto campers.
      */
     public void onBtnSearch(){
-
-        // resets the listView for new search
-        lvFreeAutoCampers.getItems().clear();
-
-        getSelectedDates();
-        getSelectedAutoCType();
-
-        if (selectedStartDate == null || selectedEndDate == null || selectedAutoCamperType == null){
+        if (!dpStartDate.isArmed() || !dpEndDate.isArmed()){
             final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date, end date and type");
             ALERT_INFO.start();
         }
         else {
-            findAvailableAutoCampers();
-            listAvailableAutoCampers();
+            // resets the listView for new search
+            lvFreeAutoCampers.getItems().clear();
+
+            getSelectedDates();
+            getSelectedAutoCType();
+
+            if (selectedStartDate == null || selectedEndDate == null || selectedAutoCamperType == null) {
+                final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date, end date and type");
+                ALERT_INFO.start();
+            } else {
+                findAvailableAutoCampers();
+                listAvailableAutoCampers();
+            }
         }
     }
 
@@ -83,18 +87,18 @@ public class CreateRentalController implements Initializable{
      */
     public void onButtonConfirm(){
 
-        setPeriod();
+            setPeriod();
 
-        getSelectedAutoC();
-        setAutoCamper();
+            getSelectedAutoC();
+            setAutoCamper();
 
-        if (selectedStartDate != null && selectedEndDate != null && selectedAutocamper != null) {
-            MainController.getInstance().changeView(ViewList.CREATERENTALCUSTOM, BorderPaneRegion.CENTER);
-        }
-        else {
-            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Some information is missing.\nPlease check your search criteria");
-            ALERT_INFO.start();
-        }
+            if (selectedStartDate != null && selectedEndDate != null && selectedAutocamper != null) {
+                MainController.getInstance().changeView(ViewList.CREATERENTALCUSTOM, BorderPaneRegion.CENTER);
+            } else {
+                final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Some information is missing.\nPlease check your search criteria");
+                ALERT_INFO.start();
+            }
+
     }
 
 
