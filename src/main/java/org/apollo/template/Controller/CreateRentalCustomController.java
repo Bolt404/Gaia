@@ -26,7 +26,6 @@ public class CreateRentalCustomController implements Initializable {
     private ComboBox cbInsurance;
 
 
-    private Rental rental = new Rental();
     private DAO<Autocamper, String> autocamperDao;
 
 
@@ -103,9 +102,11 @@ public class CreateRentalCustomController implements Initializable {
 
     private void saveRentalInformation() {
 
+        Rental rental = new Rental();
+
         txStartDate.getText();
         txEndDate.getText();
-        String aChassisNo = StartedRental.getSelectedAutocamper().getChassisNo();
+        Autocamper autocamper = StartedRental.getSelectedAutocamper();
         cbInsurance.getSelectionModel().getSelectedItem();
     }
 

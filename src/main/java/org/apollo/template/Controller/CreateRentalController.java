@@ -29,6 +29,7 @@ public class CreateRentalController implements Initializable{
 
     private Date selectedStartDate;
     private Date selectedEndDate;
+    private String selectedAutoCamperType;
     private Autocamper selectedAutocamper;
     private List<Autocamper> availableAutocampersPeriod;
 
@@ -36,6 +37,7 @@ public class CreateRentalController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         comboBoxSetVal();
     }
 
@@ -48,17 +50,23 @@ public class CreateRentalController implements Initializable{
      */
     public void onBtnSearch(){
 
-        getSelectedDates();
-        getSelectedAutoC();
+        lvFreeAutoCampers.getItems().clear();
 
-        if (selectedStartDate == null || selectedEndDate == null){
-            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date and end date");
+        getSelectedDates();
+        getSelectedAutoCType();
+
+        if (selectedStartDate == null || selectedEndDate == null || selectedAutoCamperType == null){
+            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date, end date and type");
             ALERT_INFO.start();
         }
         else {
             findAvailableAutoCampers();
             listAvailableAutoCampers();
         }
+    }
+
+    private void getSelectedAutoCType() {
+        selectedAutoCamperType = cbType.getSelectionModel().getSelectedItem().toString();
     }
 
 
@@ -79,6 +87,7 @@ public class CreateRentalController implements Initializable{
      */
     public void onButtonConfirm(){
         setPeriod();
+        getSelectedAutoC();
         setAutoCamper();
 
         if (selectedStartDate != null && selectedEndDate != null && selectedAutocamper != null) {
@@ -99,7 +108,12 @@ public class CreateRentalController implements Initializable{
     private void findAvailableAutoCampers() {
         RentalUtil rentalUtil = new RentalUtil();
 
-        availableAutocampersPeriod = rentalUtil.availableAutocampers(selectedStartDate, selectedEndDate);
+        if (selectedAutoCamperType.equals("Show all")){
+            availableAutocampersPeriod = rentalUtil.availableAutocampers(selectedStartDate, selectedEndDate);
+        }
+        else {
+            availableAutocampersPeriod = rentalUtil.availableAutocampers(selectedStartDate, selectedEndDate, selectedAutoCamperType);
+        }
     }
 
 
@@ -115,16 +129,7 @@ public class CreateRentalController implements Initializable{
         else {
 
             for (Autocamper autocamper : availableAutocampersPeriod) {
-
-                // if "Show all" is selected all free auto campers in the given period is listed
-                if (cbType.getSelectionModel().getSelectedItem() == "Show all") {
-                    lvFreeAutoCampers.getItems().add(autocamper);
-                }
-
-                // if special type is selected all free auto campers of the selected type in the given period is listed
-                if (autocamper.getType() == cbType.getSelectionModel().getSelectedItem()) {
-                    lvFreeAutoCampers.getItems().add(autocamper);
-                }
+                lvFreeAutoCampers.getItems().add(autocamper);
             }
         }
     }
@@ -149,12 +154,13 @@ public class CreateRentalController implements Initializable{
      * Method for
      */
     private void setAutoCamper() {
+
         if (selectedAutocamper == null){
             final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a auto camper");
             ALERT_INFO.start();
         }
         else {
-            StartedRental.setSelectedAutocamper(lvFreeAutoCampers.getSelectionModel().getSelectedItem());
+            StartedRental.setSelectedAutocamper(selectedAutocamper);
         }
     }
 
