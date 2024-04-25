@@ -18,5 +18,6 @@
       </VBox>
       <Button mnemonicParsing="false" onAction="#onEditCustomer" text="Edit Customer" />
       <Button mnemonicParsing="false" onAction="#onBtnCreateAutocamper" text="Create autocamper" />
+      <Button mnemonicParsing="false" onAction="#onBtnViewAutocampers" text="View All autocampers" />
    </children>
 </VBox>
