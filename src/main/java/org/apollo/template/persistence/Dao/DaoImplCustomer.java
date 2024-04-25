@@ -35,6 +35,7 @@ public class DaoImplCustomer implements DAO<Customer, String>{
 
         }catch (SQLException e){
             DebugMessage.error(this, "ADD: Failed to add Customer");
+            System.out.println(e.getMessage());
         }
 
     }
@@ -78,8 +79,8 @@ public class DaoImplCustomer implements DAO<Customer, String>{
                     "fld_customerEmail = ?," +
                     "fld_customerDrivingLicenceNo = ?," +
                     "fld_customerStreetAdress = ?," +
-                    "fld_zipCity = ?," +
-                    "fld_noOfRental = ?" +
+                    "fld_zipCityID = ?," +
+                    "fld_noOfRental = ? " +
                     "WHERE fld_customerID = ?");
 
             ps.setString(1, customer.getCustomerFirstName());
@@ -95,6 +96,7 @@ public class DaoImplCustomer implements DAO<Customer, String>{
             int rowsAffected = ps.executeUpdate();
             DebugMessage.info(this, "UPDATE; Rows Updated " + rowsAffected);
         }catch (SQLException e){
+            System.out.println(e.getMessage());
             DebugMessage.error(this, "UPDATE; Failed to update " + customer.getCustomerID());
         }
     }
