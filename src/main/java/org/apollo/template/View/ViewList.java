@@ -36,7 +36,7 @@ public enum ViewList {
     TOPBAR("TopbarView.fxml", new TopbarController()),
     LOGIN("LoginView.fxml", new LoginController()),
 
-    ViewAutoCampers("AllAutocampersView.fxml", new AllAutocampersViewController()),
+    ViewAutoCampers("AllAutocampersView.fxml", AllAutocampersViewController.getInstance()),
     /**
      * Edit Customer View
      */

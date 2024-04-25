@@ -24,7 +24,13 @@ public class CamperComponent extends VBox {
     private Color colorReg;
     private Color colorBas;
 
-    public CamperComponent(Autocamper autocamper) {
+    private String path;
+
+    /**
+     * CamperComponent to display Autocamper Object in view.
+     * @param autocamper Object
+     */
+    public CamperComponent(Autocamper autocamper, String path) {
 
         setLicensePlate(autocamper.getRegistrationNo());
         setKmCount(autocamper.getKmCount());
@@ -32,6 +38,7 @@ public class CamperComponent extends VBox {
         setInSeson(autocamper.getMainSeasonPrice());
         setOutSeson(autocamper.getLowSeasonPrice());
         switchColorOfClass(autocamper.getType());
+        setPath(path);
 
 
         setMaxHeight(100);
@@ -48,7 +55,7 @@ public class CamperComponent extends VBox {
 
         // camperImage
         ImageView imageView = new ImageView();
-        imageView.setImage(new Image("file:src/main/resources/Designer3.jpeg"));
+        imageView.setImage(new Image("file:" + path));
         imageView.setFitWidth(190);
         imageView.setFitHeight(190);
 
@@ -143,6 +150,10 @@ public class CamperComponent extends VBox {
         setMargin(this, new Insets(50, 50, 50, 50));
     }
 
+    /**
+     * Helper method to switch color of background depending on Camper Type
+     * @param type String
+     */
     private void switchColorOfClass (String type){
         switch (type){
             case "LUXURY" -> {
@@ -193,5 +204,9 @@ public class CamperComponent extends VBox {
 
     public void setColorBas(Color colorBas) {
         this.colorBas = colorBas;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

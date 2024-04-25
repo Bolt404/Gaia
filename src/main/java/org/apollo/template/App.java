@@ -5,8 +5,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.apollo.template.Domain.Receipt;
+import org.apollo.template.Domain.Rental;
 import org.apollo.template.Service.ConfigLoader;
 import org.apollo.template.View.ViewList;
+
+import java.sql.Date;
 
 public class App extends Application {
 
@@ -18,6 +22,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
+
+        new Receipt(new Rental(new Date(2021, 9, 22), new Date(2021, 10, 22), "HALA GALA", "OP"));
 
         stageRoot = stage; // making stage public, for later use.
 
