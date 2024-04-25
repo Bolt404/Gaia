@@ -59,11 +59,8 @@ public class EditCustomerController implements Initializable {
     public void onButtonEditUpdate(){
 
         if(customer != null){
-            String str = txCustomerZipcode.getText();
 
             try {
-                int zipCity = Integer.parseInt(str);
-                customer.setZipCity(zipCity);
 
                 customer.setCustomerFirstName(txCustomerFirstName.getText());
                 customer.setCustomerLastName(txCustomerLastName.getText());
