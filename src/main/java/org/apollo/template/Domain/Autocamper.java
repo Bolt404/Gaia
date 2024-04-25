@@ -117,7 +117,6 @@ public class Autocamper {
 
         // checks if kmCount is negative.
         if (!validateIntegerNotNegative(kmCount)) throw new RuntimeException("In setKmCount; Integer is negative! " + kmCount);
-
         this.kmCount = kmCount;
     }
 
