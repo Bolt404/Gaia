@@ -2,7 +2,7 @@ package org.apollo.template.Service;
 
 import org.apollo.template.Controller.EditCustomerController;
 import org.apollo.template.Database.JDBC;
-import org.apollo.template.Domain.Customer;
+import org.apollo.template.Domain.Rental.Customer;
 import org.apollo.template.Service.Debugger.DebugMessage;
 
 import java.sql.Connection;

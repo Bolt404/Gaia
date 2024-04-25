@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import org.apollo.template.Domain.Autocamper;
 
 
 public class CamperComponent extends VBox {
@@ -16,8 +18,21 @@ public class CamperComponent extends VBox {
     private int noRentals = 10;
     private float inSeson = 200020f;
     private float outSeson = 100030f;
+    private final Color colorSelected = Color.LIGHTGREEN;
+    private final Color colorNotSelected = Color.WHITE;
+    private Color colorLux;
+    private Color colorReg;
+    private Color colorBas;
 
-    public CamperComponent() {
+    public CamperComponent(Autocamper autocamper) {
+
+        setLicensePlate(autocamper.getRegistrationNo());
+        setKmCount(autocamper.getKmCount());
+        setNoRentals(autocamper.getNoOfRental());
+        setInSeson(autocamper.getMainSeasonPrice());
+        setOutSeson(autocamper.getLowSeasonPrice());
+        switchColorOfClass(autocamper.getType());
+
 
         setMaxHeight(100);
         setMaxWidth(100);
@@ -43,12 +58,12 @@ public class CamperComponent extends VBox {
         Label classificationLable = new Label("Classification");
         classificationLable.setId("ClassificationLabel");
 
-        Label luxusLable = new Label("LUXUS");
+        Label luxusLable = new Label("LUXURY");
         luxusLable.setId("luxusLable");
         luxusLable.setPrefWidth(100);
         luxusLable.setAlignment(Pos.CENTER);
 
-        Label regular = new Label("REGULAR");
+        Label regular = new Label("STANDARD");
         regular.setId("regular");
         regular.setPrefWidth(100);
         regular.setAlignment(Pos.CENTER);
@@ -63,13 +78,16 @@ public class CamperComponent extends VBox {
 
         // creating the classification vBox
         VBox vBoxClassification1 = new VBox();
-        vBoxClassification1.setId("vboxClassification");
+        vBoxClassification1.setId("classificationVbox");
+        vBoxClassification1.setBackground(Background.fill(colorLux));
 
         VBox vBoxClassification2 = new VBox();
-        vBoxClassification2.setId("vboxClassification");
+        vBoxClassification2.setId("classificationVbox");
+        vBoxClassification2.setBackground(Background.fill(colorReg));
 
         VBox vBoxClassification3 = new VBox();
-        vBoxClassification3.setId("vboxClassification");
+        vBoxClassification3.setId("classificationVbox");
+        vBoxClassification3.setBackground(Background.fill(colorBas));
 
         vBoxClassification1.getChildren().add(luxusLable);
         vBoxClassification2.getChildren().add(regular);
@@ -123,6 +141,57 @@ public class CamperComponent extends VBox {
 
 
         setMargin(this, new Insets(50, 50, 50, 50));
+    }
 
+    private void switchColorOfClass (String type){
+        switch (type){
+            case "LUXURY" -> {
+                setColorLux(colorSelected);
+                setColorReg(colorNotSelected);
+                setColorBas(colorNotSelected);
+            }
+            case "REGULAR" -> {
+                setColorLux(colorNotSelected);
+                setColorReg(colorSelected);
+                setColorBas(colorNotSelected);
+            }
+            case "BASIC" -> {
+                setColorLux(colorNotSelected);
+                setColorReg(colorNotSelected);
+                setColorBas(colorSelected);
+            }
+        }
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        LicensePlate = licensePlate;
+    }
+
+    public void setKmCount(int kmCount) {
+        this.kmCount = kmCount;
+    }
+
+    public void setNoRentals(int noRentals) {
+        this.noRentals = noRentals;
+    }
+
+    public void setInSeson(float inSeson) {
+        this.inSeson = inSeson;
+    }
+
+    public void setOutSeson(float outSeson) {
+        this.outSeson = outSeson;
+    }
+
+    public void setColorLux(Color colorLux) {
+        this.colorLux = colorLux;
+    }
+
+    public void setColorReg(Color colorReg) {
+        this.colorReg = colorReg;
+    }
+
+    public void setColorBas(Color colorBas) {
+        this.colorBas = colorBas;
     }
 }

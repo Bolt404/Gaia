@@ -7,7 +7,7 @@
 }
 
 #luxusLable, #regular, #basic{
-    -fx-font-size: 12;
+    -fx-font-size: 10;
     -fx-font-weight: bold;
 
 
@@ -22,7 +22,7 @@
     -fx-border-color: BLACK;
 }
 
-#vboxClassification{
+#classificationVbox{
     -fx-border-color: BLACK;
 }
 
