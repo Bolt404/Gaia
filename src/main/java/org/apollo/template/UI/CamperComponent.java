@@ -24,6 +24,10 @@ public class CamperComponent extends VBox {
     private Color colorReg;
     private Color colorBas;
 
+    /**
+     * CamperComponent to display Autocamper Object in view.
+     * @param autocamper Object
+     */
     public CamperComponent(Autocamper autocamper) {
 
         setLicensePlate(autocamper.getRegistrationNo());
@@ -143,6 +147,10 @@ public class CamperComponent extends VBox {
         setMargin(this, new Insets(50, 50, 50, 50));
     }
 
+    /**
+     * Helper method to switch color of background depending on Camper Type
+     * @param type String
+     */
     private void switchColorOfClass (String type){
         switch (type){
             case "LUXURY" -> {

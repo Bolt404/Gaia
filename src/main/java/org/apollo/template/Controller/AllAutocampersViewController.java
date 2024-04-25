@@ -1,21 +1,14 @@
 package org.apollo.template.Controller;
 
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import org.apollo.template.Domain.Autocamper;
 import org.apollo.template.UI.CamperComponent;
-import org.apollo.template.persistence.Dao.DAO;
-import org.apollo.template.persistence.Dao.DAOImplCamperType;
 import org.apollo.template.persistence.Dao.DaoImplAutoCamper;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,19 +16,17 @@ import java.util.ResourceBundle;
 public class AllAutocampersViewController implements Initializable {
     private List<Autocamper> autocamperList = new ArrayList<>();
     @FXML
-    private AnchorPane root;
-    @FXML
     private GridPane gridPane;
-    @FXML
-    private ScrollPane mainPane;
     @FXML
     private VBox mainVbox;
     private int gridColumn;
     private int gridRow;
 
+    /**
+     * Generate Grid of Autocampers.
+     */
     private void loadGrid() {
         gridPane = new GridPane();
-        //gridPane.setGridLinesVisible(true);
 
         gridPane.setPadding(new Insets(30, 30, 30, 30));
         gridPane.setHgap(50);
@@ -47,6 +38,10 @@ public class AllAutocampersViewController implements Initializable {
         }
     }
 
+    /**
+     * Add CamperComponent to grid.
+     * @param autocamper Object
+     */
     public void addCompToGrid(Autocamper autocamper) {
         if (gridColumn < 3) { // Check if the column count is less than 6
             // Add a new button to the gridPane at the current gridRow and gridColumn
@@ -63,7 +58,7 @@ public class AllAutocampersViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(this::getAutoCampersFromDB);
+        Platform.runLater(this::getAutoCampersFromDB); //We are using runLater because apparently containers are generated after initialize?
     }
 
     public void getAutoCampersFromDB() {
