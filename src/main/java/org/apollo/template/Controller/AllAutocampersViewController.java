@@ -28,6 +28,8 @@ public class AllAutocampersViewController implements Initializable {
     private int gridRow;
     private boolean hasRun = false;
 
+    private DaoImplAutoCamper daoImplAutoCamper = new DaoImplAutoCamper();
+
     private AllAutocampersViewController() {
 
     }
@@ -113,7 +115,6 @@ public class AllAutocampersViewController implements Initializable {
      * Generates a List of Autocamper Objects based on information from the DB.
      */
     public void getAutoCampersFromDB() {
-        DaoImplAutoCamper daoImplAutoCamper = new DaoImplAutoCamper();
 
         List<Autocamper> dblist = daoImplAutoCamper.readAll();
 
@@ -133,6 +134,4 @@ public class AllAutocampersViewController implements Initializable {
 
         return instance;
     }
-
 }
-
