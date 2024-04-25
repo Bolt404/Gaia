@@ -8,6 +8,7 @@ public class StartedRental {
 
     public static Date startOate = null;
     public static Date endOate = null;
+    public static String autoCamperType = null;
     public static Autocamper autocamper = null;
 
 
@@ -32,6 +33,15 @@ public class StartedRental {
         }
         return null;
     }
+
+    public static void setAutoCamperType(String selectedAutoCamperType){
+        autoCamperType = selectedAutoCamperType;
+    }
+
+    public static String getAutoCamperType(){
+        return autoCamperType;
+    }
+
 
     public static void setSelectedAutocamper(Autocamper selectedAutocamper){
         autocamper = selectedAutocamper;
