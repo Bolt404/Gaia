@@ -95,7 +95,7 @@ CREATE TABLE tbl_zipCity(
 
 -- 9. table:
 CREATE TABLE tbl_customer(
-	fld_customerID varchar(25) PRIMARY KEY,					-- customerID consists of an "ISO 3166-1 alpha-2" country code followed by the customer's 
+	fld_customerID varchar(32) PRIMARY KEY,					-- customerID consists of an "ISO 3166-1 alpha-2" country code followed by the customer's 
 															-- unique driving licence number. This composite key is used because driving licence numbers 
 															-- alone may not be unique globally. Including the country code ensures a unique identifier 
 															-- across international customers, which is crucial for maintaining unique records in the database.
@@ -105,6 +105,7 @@ CREATE TABLE tbl_customer(
 	fld_customerEmail varchar(256),
 	fld_customerDrivingLicenceNo varchar(30),
 	fld_customerStreetAdress varchar(128),
+	fld_customerCountry varchar(50),
 	fld_zipCityID INTEGER,
 	fld_noOfRental INTEGER,
 	FOREIGN KEY (fld_zipCityID) REFERENCES tbl_zipCity (fld_zipCityID)
@@ -115,7 +116,7 @@ CREATE TABLE tbl_customer(
 CREATE TABLE tbl_customerRental(
 	fld_customerRentalID INTEGER IDENTITY (1,1) PRIMARY KEY,
 	fld_rentalID INTEGER,
-	fld_customerID varchar(25),
+	fld_customerID varchar(32),
 	FOREIGN KEY (fld_rentalID) REFERENCES tbl_rental (fld_rentalID),
 	FOREIGN KEY (fld_customerID) REFERENCES tbl_customer (fld_customerID)
 );
@@ -135,4 +136,3 @@ CREATE TABLE tbl_coDriver(
 	FOREIGN KEY (fld_zipCityID) REFERENCES tbl_zipCity (fld_zipCityID),
 	FOREIGN KEY (fld_rentalID) REFERENCES tbl_rental (fld_rentalID)
 );
-
