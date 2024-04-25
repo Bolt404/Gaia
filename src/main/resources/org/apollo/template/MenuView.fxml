@@ -4,13 +4,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="TOP_CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="266.0" spacing="30.0" style="-fx-background-color: A0DAA0;" stylesheets="@css/Menu.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="266.0" spacing="30.0" style="-fx-background-color: A0DAA0;" stylesheets="@css/Menu.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
          <children>
             <Button mnemonicParsing="false" onAction="#onBtnHome" text="HOME" />
             <Button mnemonicParsing="false" onAction="#onBtnSettings" text="settings" />
-            <Button mnemonicParsing="false" onAction="#onBtnGame" text="game" />
+            <Button mnemonicParsing="false" onAction="#onBtnGame" text="Create rental" />
          </children>
          <VBox.margin>
             <Insets top="60.0" />

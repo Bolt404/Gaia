@@ -2,9 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -12,69 +10,25 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <VBox prefHeight="731.0" prefWidth="996.0">
+   <children>
+      <VBox prefHeight="731.0" prefWidth="996.0">
          <children>
-            <Label text="Create Rental - Customer information">
+            <Label text="Create Rental ">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold Italic" size="18.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" top="20.0" />
                </VBox.margin></Label>
-            <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="996.0">
-               <children>
-                  <Label text="Choosen period">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="16.0" />
-                     </font></Label>
-                  <TextField fx:id="txStartDate">
-                     <HBox.margin>
-                        <Insets left="63.0" />
-                     </HBox.margin></TextField>
-                  <Label text="-">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin></Label>
-                  <TextField fx:id="txEndDate">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox prefHeight="25.0" prefWidth="956.0">
-               <children>
-                  <Label text="Choosen auto camper">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <TextField fx:id="txAutoCamper" prefHeight="25.0" prefWidth="769.0">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" top="20.0" />
-               </VBox.margin>
-            </HBox>
-            <Label text="Customer information:">
+            <Label text="Co-driver information:">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
                <VBox.margin>
-                  <Insets left="20.0" top="40.0" />
+                  <Insets left="20.0" top="80.0" />
                </VBox.margin>
             </Label>
-            <Label text="Customer email">
+            <Label text="Co-driver email">
                <VBox.margin>
                   <Insets left="20.0" top="20.0" />
                </VBox.margin>
@@ -89,7 +43,7 @@
             </TextField>
             <HBox prefHeight="25.0" prefWidth="996.0">
                <children>
-                  <Label text="Customer first name">
+                  <Label text="Co-driver first name">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -97,7 +51,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label text="Customer last name">
+                  <Label text="Co-driver last name">
                      <HBox.margin>
                         <Insets left="125.0" />
                      </HBox.margin>
@@ -184,25 +138,17 @@
             </HBox>
             <HBox prefHeight="25.0" prefWidth="976.0">
                <children>
-                  <Label text="Customer phone number">
+                  <Label text="Co-driver phone number">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label text="Customer driver license number">
+                  <Label text="Co-driver license number">
                      <font>
                         <Font size="14.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="97.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label text="Insurance">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="84.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -218,41 +164,13 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </TextField>
-                  <ComboBox fx:id="cbInsurance" prefHeight="25.0" prefWidth="139.0">
-                     <HBox.margin>
-                        <Insets left="21.0" />
-                     </HBox.margin>
-                  </ComboBox>
                </children>
                <VBox.margin>
                   <Insets bottom="30.0" left="20.0" />
                </VBox.margin>
             </HBox>
-            <Label layoutX="30.0" layoutY="188.0" text="CoDriver information:">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </Label>
-            <Button mnemonicParsing="false" onAction="#onButtonAddCoDriver" text="Add coDriver">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="20.0" top="5.0" />
-               </VBox.margin>
-            </Button>
-            <ListView fx:id="listViewCoDrivers" prefHeight="194.0" prefWidth="948.0">
-               <VBox.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" />
-               </VBox.margin>
-            </ListView>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="12.0" prefWidth="996.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onButtonBack" prefHeight="25.0" prefWidth="86.0" text="Back">
-                     <HBox.margin>
-                        <Insets bottom="20.0" right="678.0" />
-                     </HBox.margin>
-                  </Button>
                   <Button mnemonicParsing="false" onAction="#onButtonCancel" prefHeight="25.0" prefWidth="86.0" text="Cancel">
                      <HBox.margin>
                         <Insets bottom="20.0" />
@@ -264,7 +182,10 @@
                      </HBox.margin>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets top="190.0" />
+               </VBox.margin>
             </HBox>
          </children></VBox>
-    </children>
+   </children>
 </AnchorPane>

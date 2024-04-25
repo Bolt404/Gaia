@@ -7,6 +7,7 @@ public class Rental {
     private Date startDate, endDate;
     private String chassisNo, insuranceID;
 
+    public Rental(){}
 
     public Rental(Date startDate, Date endDate, String chassisNo, String insuranceID) {
         setStartDate(startDate);
@@ -14,6 +15,8 @@ public class Rental {
         setChassisNo(chassisNo);
         setInsuranceID(insuranceID);
     }
+
+
 
 
     // region Getter and Setter
