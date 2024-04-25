@@ -1,5 +1,7 @@
 package org.apollo.template.Domain;
 
+import org.apollo.template.Service.StartedRental;
+
 import java.util.Date;
 
 /**
@@ -13,6 +15,8 @@ public class Autocamper {
     private Date purchaseDate;
     private int kmCount, noOfRental, weight, length, width, height, noOfBeds, noOfToilets, noOfSeatbelts;
     private float mainSeasonPrice, lowSeasonPrice;
+
+    public Autocamper(){}
 
     /**
      * Constructs an autocamper object with specified parameters.
@@ -264,15 +268,9 @@ public class Autocamper {
         return floatingPointNumber > 0;
     }
 
-    @Override
-    public String toString() {
-        return  "RegistrationNO'" + registrationNo + '\'' +
-                ", type='" + type + '\'' +
-                ", noOfBeds=" + noOfBeds +
-                ", noOfToilets=" + noOfToilets +
-                ", noOfSeatbelts=" + noOfSeatbelts +
-                ", mainSeasonPrice=" + mainSeasonPrice +
-                ", lowSeasonPrice=" + lowSeasonPrice +
-                '}';
+
+    public String toString(){
+        return String.format("%s  -  Brand: %s  -  #Beds: %d  -  #Seatbelts %d  -  Price Main season %.2f €  -  Price Low season %.2f €",getType(),getBrand(),getNoOfBeds(),getNoOfSeatbelts(),getMainSeasonPrice(),getLowSeasonPrice());
     }
+
 }
