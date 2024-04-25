@@ -33,7 +33,7 @@ public class EditCustomerController implements Initializable {
                     txCustomerLastName.setText(customer.getCustomerLastName());
                     txCustomerStreet.setText(customer.getCustomerAddress());
                     txCustomerCountry.setText(customer.getCustomerCountry());
-                    txCustomerZipcode.setText(customer.getZipCity() + "");
+                    txCustomerZipcode.setText(CustomerUtil.getZipCode());
                     txCustomerCity.setText(customer.getCustomerCountry());
                     txCustomerPhoneNo.setText(customer.getCustomerPhoneNumber());
                     txCustomerDriverLicense.setText(customer.getCustomerDrivingLicenceNo());
@@ -73,14 +73,6 @@ public class EditCustomerController implements Initializable {
                 customer.setCustomerDrivingLicenceNo(txCustomerDriverLicense.getText());
                 customer.setCustomerAddress(txCustomerStreet.getText());
                 customer.setCustomerCountry(txCustomerCountry.getText());
-
-                System.out.println(txCustomerFirstName.getText());
-                System.out.println(txCustomerLastName.getText());
-                System.out.println(txCustomerPhoneNo.getText());
-                System.out.println(txCustomerEmail.getText());
-                System.out.println(txCustomerDriverLicense.getText());
-                System.out.println(txCustomerStreet.getText());
-                System.out.println(txCustomerZipcode.getText());
 
                 DaoImplCustomer dao = new DaoImplCustomer();
 
