@@ -115,6 +115,7 @@ public class AllAutocampersViewController implements Initializable {
      * Generates a List of Autocamper Objects based on information from the DB.
      */
     public void getAutoCampersFromDB() {
+        autocamperList.clear();
 
         List<Autocamper> dblist = daoImplAutoCamper.readAll();
 
