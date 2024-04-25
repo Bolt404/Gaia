@@ -1,9 +1,12 @@
 package org.apollo.template.Service;
 
+import javafx.scene.shape.Circle;
 import org.apollo.template.Database.JDBC;
 import org.apollo.template.Domain.Rental.Customer;
 import org.apollo.template.Service.Debugger.DebugMessage;
 
+import javax.lang.model.element.NestingKind;
+import java.io.StringReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +16,7 @@ public class CustomerUtil {
 
     private static Connection con = JDBC.get().getConnection();
     private static String zipCode = "";
+    private static String cityName = "";
 
     /**
      * Method for getting all data from a customer, with a given email
@@ -30,6 +34,7 @@ public class CustomerUtil {
 
             if(rs.next()){
                 zipCode = rs.getString(12);
+                cityName = rs.getString(13);
                 return new Customer(
                         rs.getString(1),
                         rs.getString(2),
@@ -60,5 +65,6 @@ public class CustomerUtil {
         return zipCode;
     }
 
+    public static String getCityName() { return cityName; }
 
 }
