@@ -15,7 +15,6 @@ public class Rental {
         setInsuranceID(insuranceID);
     }
 
-
     // region Getter and Setter
     public Date getStartDate() {
         return startDate;
