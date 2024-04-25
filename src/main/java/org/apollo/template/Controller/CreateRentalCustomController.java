@@ -2,10 +2,11 @@ package org.apollo.template.Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import org.apollo.template.Domain.Autocamper;
-import org.apollo.template.Domain.Rental;
+import org.apollo.template.Domain.Rental.Rental;
 import org.apollo.template.Service.StartedRental;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
@@ -21,17 +22,22 @@ public class CreateRentalCustomController implements Initializable {
                       txCustomerStreet, txCustomerCountry, txCustomerZipcode, txCustomerCity, txCustomerPhoneNo, txCustomerDriverLicense;
     @FXML
     private ListView listViewCoDrivers;
+    @FXML
+    private ComboBox cbInsurance;
 
-    private Rental rental;
+
+    private Rental rental = new Rental();
     private DAO<Autocamper, String> autocamperDao;
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //setRental();
+
         setPeriod();
         setAutocamper();
+
+        comboBoxSetVal();
 
         testStatic();
 
@@ -69,13 +75,58 @@ public class CreateRentalCustomController implements Initializable {
     }
 
     public void onButtonCancel(){
+
+        resetStartedRental();
+
         MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
     }
 
+
     public void onButtonConfirm(){
+
+        saveRentalInformation();
+
+        resetStartedRental();
         System.out.println("Printing rental");
     }
 
+
+    /**
+     * Method for
+     */
+    private void comboBoxSetVal(){
+
+        cbInsurance.getItems().addAll("Basic", "Super Cover Plus");
+        cbInsurance.setValue("Basic");
+    }
+
+
+    private void saveRentalInformation() {
+
+        txStartDate.getText();
+        txEndDate.getText();
+        String aChassisNo = StartedRental.getSelectedAutocamper().getChassisNo();
+        cbInsurance.getSelectionModel().getSelectedItem();
+    }
+
+
+    private void saveCustomInformation(){
+
+    }
+
+
+    private void saveCoDriverInformation(){
+
+    }
+
+
+    private void resetStartedRental() {
+
+        StartedRental.setStartOate(null);
+        StartedRental.setEndOate(null);
+        StartedRental.setSelectedAutocamper(null);
+
+    }
 
 
 

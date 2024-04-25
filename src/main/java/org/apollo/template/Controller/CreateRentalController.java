@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.apollo.template.Domain.Autocamper;
-import org.apollo.template.Domain.Rental;
 import org.apollo.template.Service.Alert.AlertType;
 import org.apollo.template.Service.Debugger.DebugMessage;
 import org.apollo.template.Service.RentalUtil;
@@ -28,7 +27,9 @@ public class CreateRentalController implements Initializable{
     @FXML
     private ListView<Autocamper> lvFreeAutoCampers;
 
-    private Rental rental = new Rental();
+    private Date selectedStartDate;
+    private Date selectedEndDate;
+    private Autocamper selectedAutocamper;
     private List<Autocamper> availableAutocampersPeriod;
 
 
@@ -46,7 +47,11 @@ public class CreateRentalController implements Initializable{
      * or proceeds to find and list available auto campers.
      */
     public void onBtnSearch(){
-        if (dpStartDate.getValue() == null || dpEndDate.getValue() == null){
+
+        getSelectedDates();
+        getSelectedAutoC();
+
+        if (selectedStartDate == null || selectedEndDate == null){
             final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date and end date");
             ALERT_INFO.start();
         }
@@ -76,7 +81,7 @@ public class CreateRentalController implements Initializable{
         setPeriod();
         setAutoCamper();
 
-        if (rental.getStartDate() != null && rental.getEndDate() != null && rental.getChassisNo() != null) {
+        if (selectedStartDate != null && selectedEndDate != null && selectedAutocamper != null) {
             MainController.getInstance().changeView(ViewList.CREATERENTALCUSTOM, BorderPaneRegion.CENTER);
         }
         else {
@@ -94,10 +99,7 @@ public class CreateRentalController implements Initializable{
     private void findAvailableAutoCampers() {
         RentalUtil rentalUtil = new RentalUtil();
 
-        Date startDate = Date.valueOf(dpStartDate.getValue());
-        Date endDate = Date.valueOf(dpEndDate.getValue());
-
-        availableAutocampersPeriod = rentalUtil.availableAutocampers(startDate, endDate);
+        availableAutocampersPeriod = rentalUtil.availableAutocampers(selectedStartDate, selectedEndDate);
     }
 
 
@@ -132,16 +134,13 @@ public class CreateRentalController implements Initializable{
      * Method for
      */
     private void setPeriod() {
-        if (dpStartDate.getValue() == null || dpEndDate.getValue() == null){
+        if (selectedStartDate == null || selectedEndDate == null){
             final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date and end date");
             ALERT_INFO.start();
         }
         else {
-            rental.setStartDate(Date.valueOf(dpStartDate.getValue()));
-            rental.setEndDate(Date.valueOf(dpEndDate.getValue()));
-
-            StartedRental.setStartOate(Date.valueOf(dpStartDate.getValue()));
-            StartedRental.setEndOate(Date.valueOf(dpEndDate.getValue()));
+            StartedRental.setStartOate(selectedStartDate);
+            StartedRental.setEndOate(selectedEndDate);
         }
     }
 
@@ -150,14 +149,23 @@ public class CreateRentalController implements Initializable{
      * Method for
      */
     private void setAutoCamper() {
-        if (lvFreeAutoCampers.getSelectionModel().getSelectedItem() == null){
+        if (selectedAutocamper == null){
             final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a auto camper");
             ALERT_INFO.start();
         }
         else {
-            rental.setChassisNo(lvFreeAutoCampers.getSelectionModel().getSelectedItem().getChassisNo());
             StartedRental.setSelectedAutocamper(lvFreeAutoCampers.getSelectionModel().getSelectedItem());
         }
+    }
+
+
+    private void getSelectedDates() {
+        selectedStartDate = Date.valueOf(dpStartDate.getValue());
+        selectedEndDate = Date.valueOf(dpEndDate.getValue());
+    }
+
+    private void getSelectedAutoC() {
+        selectedAutocamper = lvFreeAutoCampers.getSelectionModel().getSelectedItem();
     }
 
 

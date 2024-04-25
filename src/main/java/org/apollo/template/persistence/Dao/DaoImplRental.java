@@ -1,7 +1,7 @@
 package org.apollo.template.persistence.Dao;
 
 import org.apollo.template.Database.JDBC;
-import org.apollo.template.Domain.Rental;
+import org.apollo.template.Domain.Rental.Rental;
 
 import java.sql.Connection;
 import java.util.List;

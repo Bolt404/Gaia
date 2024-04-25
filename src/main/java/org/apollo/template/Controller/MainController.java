@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import org.apollo.template.Domain.Rental;
 import org.apollo.template.Service.Alert.AlertComp;
 import org.apollo.template.Service.Alert.Alertable;
 import org.apollo.template.Service.Debugger.DebugMessage;
