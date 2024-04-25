@@ -1,6 +1,8 @@
 package org.apollo.template.View;
 
 import org.apollo.template.Controller.*;
+import org.apollo.template.Controller.Rental.CreateRentalController;
+import org.apollo.template.Controller.Rental.CreateRentalCustomController;
 
 /**
  * Enum representing different views in the application.

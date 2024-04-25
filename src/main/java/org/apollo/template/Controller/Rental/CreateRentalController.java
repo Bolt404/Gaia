@@ -1,8 +1,9 @@
-package org.apollo.template.Controller;
+package org.apollo.template.Controller.Rental;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import org.apollo.template.Controller.MainController;
 import org.apollo.template.Domain.Autocamper;
 import org.apollo.template.Service.Alert.AlertType;
 import org.apollo.template.Service.Debugger.DebugMessage;

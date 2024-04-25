@@ -12,4 +12,6 @@ module org.apollo.template {
     exports org.apollo.template;
     exports org.apollo.template.Controller;
     opens org.apollo.template.Controller to javafx.fxml;
+    exports org.apollo.template.Controller.Rental;
+    opens org.apollo.template.Controller.Rental to javafx.fxml;
 }

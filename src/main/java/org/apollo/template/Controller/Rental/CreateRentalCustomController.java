@@ -1,10 +1,11 @@
-package org.apollo.template.Controller;
+package org.apollo.template.Controller.Rental;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import org.apollo.template.Controller.MainController;
 import org.apollo.template.Database.JDBC;
 import org.apollo.template.Domain.Autocamper;
 import org.apollo.template.Domain.Rental.Customer;
