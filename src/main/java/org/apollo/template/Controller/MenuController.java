@@ -38,9 +38,8 @@ public class MenuController {
     }
 
     @FXML
-    protected void message(){
-        Alert a = new Alert(MainController.getInstance(), 2, AlertType.ERROR, "Error Dette er line 1");
-        a.start();
+    protected void onEditCustomer(){
+        MainController.getInstance().changeView(ViewList.EDITCUSTOMER, BorderPaneRegion.CENTER);
     }
 
     @FXML

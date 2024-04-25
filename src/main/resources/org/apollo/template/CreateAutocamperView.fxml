@@ -3,16 +3,18 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <content>
@@ -38,25 +40,61 @@
                            <VBox prefHeight="57.0" prefWidth="407.0">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="registrationNo" />
-                                 <TextField fx:id="tfRegistrationNo" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfRegistrationNo" prefHeight="25.0" prefWidth="144.0" />
+                                    <ImageView fx:id="imgRegNo" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="chassisNo" />
-                                 <TextField fx:id="tfChassisNo" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfChassisNo" />
+                                    <ImageView fx:id="imgChassisNo" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="brand" />
-                                 <TextField fx:id="tfBrand" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfBrand" />
+                                    <ImageView fx:id="imgBrand" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Km count" />
-                                 <TextField fx:id="tfKmCount" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfKmCount" />
+                                    <ImageView fx:id="imgKmCount" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                         </children>
@@ -66,25 +104,61 @@
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="weight (KG)" />
-                                 <TextField fx:id="tfWeight" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfWeight" />
+                                    <ImageView fx:id="imgWeight" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="length (CM) " />
-                                 <TextField fx:id="tfLength" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfLength" />
+                                    <ImageView fx:id="imgLength" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Width (CM)" />
-                                 <TextField fx:id="tfWidth" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfWidth" />
+                                    <ImageView fx:id="imgWidth" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="height (CM)" />
-                                 <TextField fx:id="tfHeight" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfHeight" />
+                                    <ImageView fx:id="imgHeight" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                         </children>
@@ -99,19 +173,46 @@
                            <VBox prefHeight="57.0" prefWidth="407.0">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of beds" />
-                                 <TextField fx:id="tfNoBeds" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfNoBeds" />
+                                    <ImageView fx:id="imgNumberOfBeds" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of seatbelts" />
-                                 <TextField fx:id="tfNoSeatBelts" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfNoSeatBelts" />
+                                    <ImageView fx:id="imgNumberOfSeatBelts" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of toilets" />
-                                 <TextField fx:id="tfNoToilets" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfNoToilets" />
+                                    <ImageView fx:id="imgNumberOfToilets" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS" />
@@ -127,19 +228,36 @@
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of rental(s)" />
-                                 <TextField fx:id="tfNoRentals" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfNoRentals" />
+                                    <ImageView fx:id="imgNumberOfRentals" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Purchase Date" />
-                                 <TextField fx:id="tfPurchaseDate" />
+                              <HBox>
+                                 <children>
+                                    <DatePicker fx:id="dpPurchaseDate" />
+                                    <ImageView fx:id="imgPurchaseDate" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                               <children>
-                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Camper type" />
-                                 <TextField fx:id="tfCamperType" />
+                              <HBox />
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS" />
@@ -150,19 +268,50 @@
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="In season price (EURO)" />
-                                 <TextField fx:id="tfInSesonPrice" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfInSesonPrice" />
+                                    <ImageView fx:id="imgInSesonPrice" fitHeight="25.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Out season price (EURO)" />
-                                 <TextField fx:id="tfOutSesonPrice" />
+                              <HBox>
+                                 <children>
+                                       <TextField fx:id="tfOutSesonPrice" />
+                                    <ImageView fx:id="imgOutSesonPrice" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/TempLogo_Shadow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS">
                               <children>
                                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Camper type" />
-                                 <ChoiceBox fx:id="cbCamperType" prefHeight="25.0" prefWidth="220.0" />
+                              <HBox prefHeight="25.0" prefWidth="112.0">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                             <ChoiceBox fx:id="cbCamperType" prefHeight="25.0" prefWidth="164.0" />
+                                          <ImageView fx:id="imgCamperType" fitHeight="25.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/TempLogo_Shadow.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
                               </children>
                            </VBox>
                            <VBox prefHeight="57.0" prefWidth="407.0" HBox.hgrow="ALWAYS" />
@@ -173,7 +322,7 @@
                            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                               <children>
                                  <Label text="Comment" />
-                                 <TextArea prefHeight="200.0" prefWidth="200.0" />
+                                 <TextArea fx:id="taComment" prefHeight="191.0" prefWidth="888.0" VBox.vgrow="ALWAYS" />
                               <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#onSaveClick" text="Save" />

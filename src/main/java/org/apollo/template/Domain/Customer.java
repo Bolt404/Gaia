@@ -125,4 +125,5 @@ public class Customer {
     private boolean validateIntegerNotNegative(int integer){
         return integer > 0;
     }
+
 }

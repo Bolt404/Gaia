@@ -2,6 +2,7 @@ package org.apollo.template.persistence.Dao;
 
 import org.apollo.template.Database.JDBC;
 import org.apollo.template.Domain.Autocamper;
+import org.apollo.template.Domain.CamperType;
 import org.apollo.template.Service.Debugger.DebugMessage;
 
 import java.sql.Connection;
@@ -17,11 +18,15 @@ public class DaoImplAutoCamper implements DAO<Autocamper, String> {
     @Override
     public void add(Autocamper autoCamper) {
         try{
-            PreparedStatement ps = con.prepareStatement("INSERT INTO tbl_autocamper ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO tbl_autocamper (fld_chassisNo, fld_registrationNo, fld_kmCount," +
+                    "fld_noOfRental, fld_mainSeasonPrice, fld_lowSeasonPrice, fld_weight, fld_length, fld_width, fld_height, " +
+                    "fld_purchaseDate, fld_noOfBeds, fld_noOfToilets, fld_noOfSeatbelts, fld_brand, fld_comment, fld_type) VALUES " +
+                    "( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
+
             ps.setString(1, autoCamper.getChassisNo());
             ps.setString(2, autoCamper.getRegistrationNo());
             ps.setInt(3,autoCamper.getKmCount());
-            ps.setInt(4,0);
+            ps.setInt(4,autoCamper.getNoOfRental());
             ps.setFloat(5,autoCamper.getMainSeasonPrice());
             ps.setFloat(6,autoCamper.getLowSeasonPrice());
             ps.setInt(7,autoCamper.getWeight());
@@ -36,18 +41,21 @@ public class DaoImplAutoCamper implements DAO<Autocamper, String> {
             ps.setString(16,autoCamper.getComment());
             ps.setString(17,autoCamper.getType());
 
-            DebugMessage.info(this,"ADD: Successfully added new AutoCamper.");
             ps.executeUpdate();
 
+            DebugMessage.info(this,"ADD: Successfully added new AutoCamper.");
+
+
         } catch (SQLException e) {
-            DebugMessage.error(this, "ADD: Failed to add AutoCamper");
+            DebugMessage.error(this, "ADD: Failed to add AutoCamper " + e.getMessage());
+            throw new RuntimeException();
         }
     }
 
     @Override
     public void addAll(List<Autocamper> listAutoCampers) {
         for (Autocamper autoCamper : listAutoCampers) {
-            this.add((Autocamper) autoCamper);
+            this.add(autoCamper);
         }
 
     }
@@ -129,22 +137,24 @@ public class DaoImplAutoCamper implements DAO<Autocamper, String> {
             rs.next();
             DebugMessage.info(this,"READ: Autocamper found.");
             return new Autocamper(
-                    rs.getString("fld_chassisNo"),
-                    rs.getString("fld_registrationNo"),
-                    rs.getString("fld_brand"),
-                    rs.getString("fld_comment"),
-                    rs.getString("fld_type"),
-                    rs.getInt("fld_kmCount"),
-                    rs.getInt("fld_noOfRental"),
-                    rs.getInt("fld_weight"),
-                    rs.getInt("fld_length"),
-                    rs.getInt("fld_width"),
-                    rs.getInt("fld_height"),
-                    rs.getInt("fld_noOfBeds"),
-                    rs.getInt("fld_noOfToilets"),
-                    rs.getInt("fld_noOfSeatbelts"),
-                    rs.getFloat("fld_mainSeasonPrice"), // ded
-                    rs.getFloat("fld_lowSeasonPrice")
+                    rs.getString(1), //ChassiNo
+                    rs.getString(2), //RegistrationNo
+                    rs.getString(15), //Brand
+                    rs.getString(16), //Comment
+                    rs.getString(17), //Type
+                    rs.getInt(3), //Km
+                    rs.getInt(4), //NoRental
+                    rs.getInt(7), //Weight
+                    rs.getInt(8), //Length
+                    rs.getInt(9), //width
+                    rs.getInt(10), //height
+                    rs.getInt(12), //noOfBed
+                    rs.getInt(13), //noOfWC
+                    rs.getInt(14), //NoSeatBelts
+                    rs.getFloat(5), //HighSeason
+                    rs.getFloat(6), //LowSeason
+                    rs.getDate(18)
+
             );
         } catch (SQLException e){
             DebugMessage.error(this,"READ: Failed to READ Autocamper with " + chassicNo);
