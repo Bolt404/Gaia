@@ -49,11 +49,21 @@ public class CreateRentalController implements Initializable{
      * the method proceeds to find and list available auto campers.
      */
     public void onBtnSearch(){
-        if (!dpStartDate.isArmed() || !dpEndDate.isArmed()){
-            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date, end date and type");
+        // checks if no start or end date is selected
+        if (dpStartDate.getValue() == null || dpEndDate.getValue() == null){
+
+            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date and end date");
             ALERT_INFO.start();
-        }
-        else {
+
+          // checks if end date is before start date
+        } else if (dpEndDate.getValue().isBefore(dpStartDate.getValue())) {
+
+            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please check start date and end date");
+            ALERT_INFO.start();
+
+          // if all search criteria is fulfilled
+        } else {
+
             // resets the listView for new search
             lvFreeAutoCampers.getItems().clear();
 
