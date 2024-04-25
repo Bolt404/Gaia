@@ -8,6 +8,7 @@ import org.apollo.template.Domain.Rental;
 import org.apollo.template.Service.Alert.AlertType;
 import org.apollo.template.Service.Debugger.DebugMessage;
 import org.apollo.template.Service.RentalUtil;
+import org.apollo.template.Service.StartedRental;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
 import org.apollo.template.Service.Alert.Alert;
@@ -27,7 +28,7 @@ public class CreateRentalController implements Initializable{
     @FXML
     private ListView<Autocamper> lvFreeAutoCampers;
 
-    private Rental rental = MainController.getInstance().rental;
+    private Rental rental = new Rental();
     private List<Autocamper> availableAutocampersPeriod;
 
 
@@ -138,6 +139,9 @@ public class CreateRentalController implements Initializable{
         else {
             rental.setStartDate(Date.valueOf(dpStartDate.getValue()));
             rental.setEndDate(Date.valueOf(dpEndDate.getValue()));
+
+            StartedRental.setStartOate(Date.valueOf(dpStartDate.getValue()));
+            StartedRental.setEndOate(Date.valueOf(dpEndDate.getValue()));
         }
     }
 
@@ -152,6 +156,7 @@ public class CreateRentalController implements Initializable{
         }
         else {
             rental.setChassisNo(lvFreeAutoCampers.getSelectionModel().getSelectedItem().getChassisNo());
+            StartedRental.setSelectedAutocamper(lvFreeAutoCampers.getSelectionModel().getSelectedItem());
         }
     }
 

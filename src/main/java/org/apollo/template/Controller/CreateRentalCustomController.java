@@ -6,11 +6,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import org.apollo.template.Domain.Autocamper;
 import org.apollo.template.Domain.Rental;
+import org.apollo.template.Service.StartedRental;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
 import org.apollo.template.persistence.Dao.DAO;
-import org.apollo.template.persistence.Dao.DaoImplAutoCamper;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -30,27 +29,30 @@ public class CreateRentalCustomController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setRental();
+        //setRental();
         setPeriod();
         setAutocamper();
 
-    }
-    public void setRental(){
-        this.rental = MainController.getInstance().rental;
+        testStatic();
+
     }
 
+    private void testStatic() {
+
+        System.out.println(StartedRental.getStartOate());
+        System.out.println(StartedRental.getEndOate());
+        System.out.println(StartedRental.getSelectedAutocamper());
+
+    }
+
+
     private void setPeriod() {
-        txStartDate.setText(rental.getStartDate().toString());
-        txEndDate.setText(rental.getEndDate().toString());
+        txStartDate.setText(StartedRental.getStartOate());
+        txEndDate.setText(StartedRental.getEndOate());
     }
 
     private void setAutocamper() {
-        Autocamper autocamper = autocamperDao.read(rental.getChassisNo());
-        if (autocamper != null) {
-            txAutoCamper.setText(autocamper.toString());
-        } else {
-            txAutoCamper.setText("Ingen autocamper fundet med chassisnummeret: " + rental.getChassisNo());
-        }
+        txAutoCamper.setText(StartedRental.getSelectedAutocamper().toString());
     }
 
 
