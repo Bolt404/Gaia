@@ -18,7 +18,7 @@ import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
 import org.apollo.template.persistence.Dao.DAO;
 import org.apollo.template.persistence.Dao.DaoImplCustomer;
-
+import org.apollo.template.persistence.Dao.DaoImplRental;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class CreateRentalCustomController implements Initializable {
     List<TextField> textFields = new ArrayList<>();
 
 
-    private DAO<Rental, String> rentalDao;
+    private DaoImplRental rentalDao = new DaoImplRental();
     private Customer customer;
     private boolean newCustomer = true;
     private static Connection con = JDBC.get().getConnection();
