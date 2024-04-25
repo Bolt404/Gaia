@@ -33,7 +33,7 @@ public class EditCustomerController implements Initializable {
                     txCustomerStreet.setText(customer.getCustomerAddress());
                     txCustomerCountry.setText(customer.getCustomerCountry());
                     txCustomerZipcode.setText(CustomerUtil.getZipCode());
-                    txCustomerCity.setText(customer.getCustomerCountry());
+                    txCustomerCity.setText(CustomerUtil.getCityName());
                     txCustomerPhoneNo.setText(customer.getCustomerPhoneNumber());
                     txCustomerDriverLicense.setText(customer.getCustomerDrivingLicenceNo());
                 }
