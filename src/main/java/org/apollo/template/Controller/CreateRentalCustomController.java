@@ -71,11 +71,11 @@ public class CreateRentalCustomController implements Initializable {
                     txCustomerFirstName.setText(customer.getCustomerFirstName());
                     txCustomerLastName.setText(customer.getCustomerLastName());
                     txCustomerStreet.setText(customer.getCustomerAddress());
+                    txCustomerCountry.setText(customer.getCustomerCountry());
                     txCustomerZipcode.setText(CustomerUtil.getZipCode());
-                    txCustomerCity.setText(customer.getCustomerCountry());
+                    txCustomerCity.setText(CustomerUtil.getCityName());
                     txCustomerPhoneNo.setText(customer.getCustomerPhoneNumber());
                     txCustomerDriverLicense.setText(customer.getCustomerDrivingLicenceNo());
-                    txCustomerCountry.setText(CustomerUtil.getCityName());
 
                     newCustomer = false;
                 }
