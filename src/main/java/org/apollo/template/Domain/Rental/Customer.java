@@ -123,7 +123,7 @@ public class Customer {
      * @return boolean, false for negative.
      */
     private boolean validateIntegerNotNegative(int integer){
-        return integer > 0;
+        return integer >= 0;
     }
 
 }

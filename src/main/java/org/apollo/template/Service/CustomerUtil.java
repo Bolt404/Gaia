@@ -14,6 +14,11 @@ public class CustomerUtil {
 
     private static Connection con = JDBC.get().getConnection();
 
+    /**
+     * Method for getting all data from a customer, with a given email
+     * @param email
+     * @return Returns a Customer object
+     */
     public static Customer getCustomerInformationFromEmail(String email){
 
         try {
