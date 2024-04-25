@@ -13,6 +13,7 @@ import org.apollo.template.Service.Alert.Alert;
 import org.apollo.template.Service.Alert.AlertType;
 import org.apollo.template.Service.CustomerUtil;
 import org.apollo.template.Service.Debugger.DebugMessage;
+import org.apollo.template.Service.ListenerUtill;
 import org.apollo.template.Service.StartedRental;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
@@ -53,6 +54,8 @@ public class CreateRentalCustomController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        ListenerUtill.attatchIntegerValidation(txCustomerZipcode);
 
         setPeriod();
         setAutocamper();

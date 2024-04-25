@@ -1,4 +1,4 @@
-package org.apollo.template.Domain;
+package org.apollo.template.Domain.Rental;
 
 import java.sql.Date;
 

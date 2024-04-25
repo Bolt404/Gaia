@@ -4,7 +4,7 @@ package org.apollo.template.Domain;
     Class for creating Receipt from a rental
  */
 
-import org.apollo.template.Service.Debugger.DebugMessage;
+import org.apollo.template.Domain.Rental.Rental;
 import org.apollo.template.Service.FileService;
 
 import java.io.*;
