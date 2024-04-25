@@ -17,6 +17,7 @@ public class CustomerUtil {
     private static Connection con = JDBC.get().getConnection();
     private static String zipCode = "";
     private static String cityName = "";
+    private static String countryName = "";
 
     /**
      * Method for getting all data from a customer, with a given email
@@ -35,6 +36,7 @@ public class CustomerUtil {
             if(rs.next()){
                 zipCode = rs.getString(12);
                 cityName = rs.getString(13);
+                countryName = rs.getString(14);
                 return new Customer(
                         rs.getString(1),
                         rs.getString(2),
@@ -66,5 +68,7 @@ public class CustomerUtil {
     }
 
     public static String getCityName() { return cityName; }
+
+    public static String getCountryName() { return countryName; }
 
 }
