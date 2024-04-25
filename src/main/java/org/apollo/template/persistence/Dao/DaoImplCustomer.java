@@ -19,7 +19,9 @@ public class DaoImplCustomer implements DAO<Customer, String>{
     public void add(Customer customer) {
 
         try{
-            PreparedStatement ps = con.prepareStatement("INSERT INTO tbl_customer(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO tbl_customer (fld_customerID, fld_customerFirstName, " +
+                    "fld_customerLastName, fld_customerPhoneNo, fld_customerEmail, fld_customerDrivingLicenceNo, fld_customerStreetAdress, " +
+                    "fld_customerCountry, fld_zipCityID, fld_noOfRental) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             ps.setString(1, customer.getCustomerID());
             ps.setString(2, customer.getCustomerFirstName());
             ps.setString(3, customer.getCustomerLastName());
@@ -27,8 +29,9 @@ public class DaoImplCustomer implements DAO<Customer, String>{
             ps.setString(5, customer.getCustomerEmail());
             ps.setString(6, customer.getCustomerDrivingLicenceNo());
             ps.setString(7, customer.getCustomerAddress());
-            ps.setInt(8, customer.getZipCity());
-            ps.setInt(9, customer.getNoOfRentals());
+            ps.setString(8, customer.getCustomerCountry());
+            ps.setInt(9, customer.getZipCity());
+            ps.setInt(10, customer.getNoOfRentals());
 
             DebugMessage.info(this, "ADD: Successfully added new Customer.");
             ps.execute();

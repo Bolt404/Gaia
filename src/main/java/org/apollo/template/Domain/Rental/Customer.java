@@ -12,12 +12,8 @@ public class Customer {
     private String customerCountry;
     private int zipCity, noOfRentals;
 
+    public Customer(){}
 
-    public Customer(){
-
-    }
-
-    // from DB
     public Customer(String customerID, String customerFirstName, String customerLastName, String customerPhoneNumber,
                     String customerEmail, String customerDrivingLicenceNo, String customerAddress, String customerCountry,
                     int zipCity, int noOfRentals){

@@ -48,7 +48,7 @@ public class AllAutocampersViewController implements Initializable {
     }
 
     public void addCompToGrid(Autocamper autocamper) {
-        if (gridColumn < 3) { // Check if the column count is less than 6
+        if (gridColumn < 3) { // Check if the column count is less than 3
             // Add a new button to the gridPane at the current gridRow and gridColumn
             CamperComponent camperComp = new CamperComponent(autocamper);
             gridPane.add(camperComp, gridColumn++, gridRow);

@@ -1,6 +1,5 @@
 package org.apollo.template.Service;
 
-import org.apollo.template.Controller.EditCustomerController;
 import org.apollo.template.Database.JDBC;
 import org.apollo.template.Domain.Rental.Customer;
 import org.apollo.template.Service.Debugger.DebugMessage;
@@ -13,6 +12,7 @@ import java.sql.SQLException;
 public class CustomerUtil {
 
     private static Connection con = JDBC.get().getConnection();
+    private static String zipCode = "";
 
     /**
      * Method for getting all data from a customer, with a given email
@@ -25,10 +25,11 @@ public class CustomerUtil {
             PreparedStatement ps = con.prepareCall("EXECUTE customerDataFromEmail ?");
 
             ps.setString(1, email);
-            System.out.println(ps);
+
             ResultSet rs = ps.executeQuery();
 
             if(rs.next()){
+                zipCode = rs.getString(12);
                 return new Customer(
                         rs.getString(1),
                         rs.getString(2),
@@ -41,6 +42,7 @@ public class CustomerUtil {
                         rs.getInt(9),
                         rs.getInt(10)
                 );
+
             } else return null;
 
 
@@ -48,6 +50,14 @@ public class CustomerUtil {
             DebugMessage.error(new CustomerUtil(), "GetCustomerInformationFromEmail: Failed!");
             return null;
         }
+    }
+
+    /**
+     * Method for getting zipcode from a given customer
+     * @return Returns the zipcode as a string
+     */
+    public static String getZipCode(){
+        return zipCode;
     }
 
 
