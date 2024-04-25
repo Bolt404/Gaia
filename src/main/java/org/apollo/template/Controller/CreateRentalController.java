@@ -49,20 +49,34 @@ public class CreateRentalController implements Initializable{
      * the method proceeds to find and list available auto campers.
      */
     public void onBtnSearch(){
+        // checks if no start or end date is selected
+        if (dpStartDate.getValue() == null || dpEndDate.getValue() == null){
 
-        // resets the listView for new search
-        lvFreeAutoCampers.getItems().clear();
-
-        getSelectedDates();
-        getSelectedAutoCType();
-
-        if (selectedStartDate == null || selectedEndDate == null || selectedAutoCamperType == null){
-            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date, end date and type");
+            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date and end date");
             ALERT_INFO.start();
-        }
-        else {
-            findAvailableAutoCampers();
-            listAvailableAutoCampers();
+
+          // checks if end date is before start date
+        } else if (dpEndDate.getValue().isBefore(dpStartDate.getValue())) {
+
+            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please check start date and end date");
+            ALERT_INFO.start();
+
+          // if all search criteria is fulfilled
+        } else {
+
+            // resets the listView for new search
+            lvFreeAutoCampers.getItems().clear();
+
+            getSelectedDates();
+            getSelectedAutoCType();
+
+            if (selectedStartDate == null || selectedEndDate == null || selectedAutoCamperType == null) {
+                final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Please select a start date, end date and type");
+                ALERT_INFO.start();
+            } else {
+                findAvailableAutoCampers();
+                listAvailableAutoCampers();
+            }
         }
     }
 
@@ -83,18 +97,18 @@ public class CreateRentalController implements Initializable{
      */
     public void onButtonConfirm(){
 
-        setPeriod();
+            setPeriod();
 
-        getSelectedAutoC();
-        setAutoCamper();
+            getSelectedAutoC();
+            setAutoCamper();
 
-        if (selectedStartDate != null && selectedEndDate != null && selectedAutocamper != null) {
-            MainController.getInstance().changeView(ViewList.CREATERENTALCUSTOM, BorderPaneRegion.CENTER);
-        }
-        else {
-            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Some information is missing.\nPlease check your search criteria");
-            ALERT_INFO.start();
-        }
+            if (selectedStartDate != null && selectedEndDate != null && selectedAutocamper != null) {
+                MainController.getInstance().changeView(ViewList.CREATERENTALCUSTOM, BorderPaneRegion.CENTER);
+            } else {
+                final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Some information is missing.\nPlease check your search criteria");
+                ALERT_INFO.start();
+            }
+
     }
 
 

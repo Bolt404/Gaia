@@ -62,6 +62,19 @@ public class CreateRentalCustomController implements Initializable {
 
         comboBoxSetVal();
         addTextFields();
+
+        emailListener();
+
+
+
+    }
+
+
+    /**
+     *
+     */
+    private void emailListener() {
+
         // Listener that checks if the TextField txCustomerEmail gets unfocused
         txCustomerEmail.focusedProperty().addListener((obs, oldVal, newVal) ->{
             if(!newVal){
@@ -71,20 +84,18 @@ public class CreateRentalCustomController implements Initializable {
                     txCustomerFirstName.setText(customer.getCustomerFirstName());
                     txCustomerLastName.setText(customer.getCustomerLastName());
                     txCustomerStreet.setText(customer.getCustomerAddress());
-                    txCustomerCountry.setText(customer.getCustomerCountry());
+                    txCustomerCountry.setText(CustomerUtil.getCountryName());
                     txCustomerZipcode.setText(CustomerUtil.getZipCode());
                     txCustomerCity.setText(CustomerUtil.getCityName());
                     txCustomerPhoneNo.setText(customer.getCustomerPhoneNumber());
                     txCustomerDriverLicense.setText(customer.getCustomerDrivingLicenceNo());
 
+                    System.out.println(CustomerUtil.getCityName());
                     newCustomer = false;
                 }
             }
         });
-
-
     }
-
 
 
     private void setPeriod() {
