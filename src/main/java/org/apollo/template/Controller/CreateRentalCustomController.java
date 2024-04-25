@@ -110,7 +110,7 @@ public class CreateRentalCustomController implements Initializable {
     public void onButtonCancel(){
 
         resetStartedRental();
-        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
+        MainController.getInstance().changeView(ViewList.ViewAutoCampers, BorderPaneRegion.CENTER);
     }
 
 
@@ -208,7 +208,7 @@ public class CreateRentalCustomController implements Initializable {
             DebugMessage.info(new CreateRentalCustomController(), "Added new Customer");
         }
 
-        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
+        MainController.getInstance().changeView(ViewList.ViewAutoCampers, BorderPaneRegion.CENTER);
 
     }
 

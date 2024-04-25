@@ -47,12 +47,12 @@ public class EditCustomerController implements Initializable {
 
     @FXML
     public void onButtonEditBack(){
-        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
+        MainController.getInstance().changeView(ViewList.ViewAutoCampers, BorderPaneRegion.CENTER);
     }
 
     @FXML
     public void onButtonEditCancel(){
-        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
+        MainController.getInstance().changeView(ViewList.ViewAutoCampers, BorderPaneRegion.CENTER);
     }
 
     @FXML
@@ -79,7 +79,7 @@ public class EditCustomerController implements Initializable {
             }
         }
 
-        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
+        MainController.getInstance().changeView(ViewList.ViewAutoCampers, BorderPaneRegion.CENTER);
     }
 
     public static EditCustomerController getInstance() {
