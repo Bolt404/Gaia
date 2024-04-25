@@ -1,11 +1,14 @@
 package org.apollo.template.Domain.Rental;
 
+import org.apollo.template.Domain.Autocamper;
+
 import java.sql.Date;
 
 public class Rental {
 
     private Date startDate, endDate;
     private String chassisNo, insuranceID;
+    private Autocamper autocamper;
 
     public Rental(){}
 
@@ -50,6 +53,14 @@ public class Rental {
 
     public void setInsuranceID(String insuranceID) {
         this.insuranceID = insuranceID;
+    }
+
+    public Autocamper getAutocamper() {
+        return autocamper;
+    }
+
+    public void setAutocamper(Autocamper autocamper) {
+        this.autocamper = autocamper;
     }
 
     // endregion

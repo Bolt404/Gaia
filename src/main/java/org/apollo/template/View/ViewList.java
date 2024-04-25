@@ -24,11 +24,6 @@ public enum ViewList {
     CREATERENTALCUSTOM("CreateRental_Customer.fxml", new CreateRentalCustomController()),
 
     /**
-     * Create co-driver - in create rental
-     */
-    CODRIVER("CoDriver.fxml", new CoDriverController()),
-
-    /**
      * Settings view.
      */
     SETTINGS("SettingsView.fxml", SettingsController.getInstance()),

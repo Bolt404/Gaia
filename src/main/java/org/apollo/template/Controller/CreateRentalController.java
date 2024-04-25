@@ -44,12 +44,13 @@ public class CreateRentalController implements Initializable{
 
 
     /**
-     * Method for initiating a search for available auto campers. It validates the presence
-     * of start and end dates and either displays an alert if one or both are missing,
-     * or proceeds to find and list available auto campers.
+     * Method for initiating a search for available auto campers. This method validates the presence of start and end dates
+     * and the type of auto camper. If any parameter is missing, an alert is displayed. If all parameters are present,
+     * the method proceeds to find and list available auto campers.
      */
     public void onBtnSearch(){
 
+        // resets the listView for new search
         lvFreeAutoCampers.getItems().clear();
 
         getSelectedDates();
@@ -65,10 +66,6 @@ public class CreateRentalController implements Initializable{
         }
     }
 
-    private void getSelectedAutoCType() {
-        selectedAutoCamperType = cbType.getSelectionModel().getSelectedItem().toString();
-    }
-
 
     /**
      * Method for handling the cancellation process by navigating back to the home view.
@@ -79,14 +76,15 @@ public class CreateRentalController implements Initializable{
 
 
     /**
-     * Method for confirming selection and proceeding to the rental creation view.
-     * This method sets the rental period and auto camper, and checks if all necessary
-     * information (start date, end date, chassis number) is provided. If any information
-     * is missing, an informational alert is displayed. Otherwise, it transitions to the
-     * rental creation view.
+     * Method for confirming selections and proceeding to the rental creation view. This method sets the rental period
+     * and selects the auto camper based on user inputs. It verifies if all necessary information, such as start date,
+     * end date, and auto camper selection, is provided. If any information is missing, an informational alert is displayed.
+     * Otherwise, it transitions to the rental creation view.
      */
     public void onButtonConfirm(){
+
         setPeriod();
+
         getSelectedAutoC();
         setAutoCamper();
 
@@ -101,9 +99,9 @@ public class CreateRentalController implements Initializable{
 
 
     /**
-     * Method for finding available auto campers within a specified date range.
-     * It retrieves the start and end dates from the date pickers, then uses
-     * these dates to query available auto campers through the RentalUtil class.
+     * Method for finding available auto campers within a specified date range. Retrieves the start and end dates
+     * from previously selected values and uses these dates to query for available auto campers. The search can
+     * either show all types of auto campers or filter by a specific type depending on the user's selection.
      */
     private void findAvailableAutoCampers() {
         RentalUtil rentalUtil = new RentalUtil();
@@ -118,7 +116,9 @@ public class CreateRentalController implements Initializable{
 
 
     /**
-     * Method for
+     * Method for listing available auto campers in a ListView. If no auto campers are available for the specified period,
+     * an informational alert is displayed prompting the user to select another type or date period. If auto campers are available,
+     * each one is added to the ListView for display.
      */
     private void listAvailableAutoCampers() {
 
@@ -136,7 +136,9 @@ public class CreateRentalController implements Initializable{
 
 
     /**
-     * Method for
+     * Method for setting the rental period on a static StartedRental class based on selected start and end dates. If either date is not selected,
+     * an informational alert is displayed, prompting the user to choose both dates. If both dates are selected, the start and end dates
+     * are set in the StartedRental class to define the rental period.
      */
     private void setPeriod() {
         if (selectedStartDate == null || selectedEndDate == null){
@@ -151,7 +153,9 @@ public class CreateRentalController implements Initializable{
 
 
     /**
-     * Method for
+     * Method for setting the selected auto camper in the static StartedRental class. If no auto camper is selected,
+     * an informational alert is displayed, prompting the user to make a selection. If an auto camper is selected,
+     * it is set as the selected auto camper in StartedRental.
      */
     private void setAutoCamper() {
 
@@ -165,25 +169,47 @@ public class CreateRentalController implements Initializable{
     }
 
 
+    /**
+     * Method for retrieving and storing the selected start and end dates from date pickers as class variables.
+     * This method captures the values from the date picker inputs and directly updates the class variables
+     * selectedStartDate and selectedEndDate.
+     */
     private void getSelectedDates() {
         selectedStartDate = Date.valueOf(dpStartDate.getValue());
         selectedEndDate = Date.valueOf(dpEndDate.getValue());
     }
 
+
+    /**
+     * Method for retrieving the selected auto camper type from a combo box and storing it in a class variable.
+     * This method captures the currently selected item from the combo box and converts it to a string,
+     * which is then assigned to the selectedAutoCamperType class variable.
+     */
+    private void getSelectedAutoCType() {
+        selectedAutoCamperType = cbType.getSelectionModel().getSelectedItem().toString();
+    }
+
+
+    /**
+     * Method for retrieving the selected auto camper from a list view and storing it as a class variable.
+     * This method accesses the selected item from the list view's selection model and updates the class variable
+     * selectedAutocamper with this value.
+     */
     private void getSelectedAutoC() {
         selectedAutocamper = lvFreeAutoCampers.getSelectionModel().getSelectedItem();
     }
 
 
     /**
-     * Method for
+     * Method for initializing a combo box with predefined values and setting a default selection.
+     * This method populates the combo box with various auto camper types and sets the initial selected
+     * value to "Show all", ensuring a default state is ready for user interaction.
      */
     private void comboBoxSetVal(){
 
         cbType.getItems().addAll("Show all", "Luxury", "Standard", "Basic");
         cbType.setValue("Show all");
     }
-
 
 
 

@@ -5,13 +5,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import org.apollo.template.Domain.Autocamper;
+import org.apollo.template.Domain.Rental.Customer;
 import org.apollo.template.Domain.Rental.Rental;
+import org.apollo.template.Service.Alert.Alert;
+import org.apollo.template.Service.Alert.AlertType;
 import org.apollo.template.Service.StartedRental;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
 import org.apollo.template.persistence.Dao.DAO;
 import java.net.URL;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CreateRentalCustomController implements Initializable {
@@ -25,8 +30,10 @@ public class CreateRentalCustomController implements Initializable {
     @FXML
     private ComboBox cbInsurance;
 
+    List<TextField> textFields = new ArrayList<>();
 
-    private DAO<Autocamper, String> autocamperDao;
+
+    private DAO<Rental, String> rentalDao;
 
 
 
@@ -38,23 +45,18 @@ public class CreateRentalCustomController implements Initializable {
 
         comboBoxSetVal();
 
-        testStatic();
+        addTextFields();
 
     }
 
-    private void testStatic() {
-
-        System.out.println(StartedRental.getStartOate());
-        System.out.println(StartedRental.getEndOate());
-        System.out.println(StartedRental.getSelectedAutocamper());
-
-    }
 
 
     private void setPeriod() {
         txStartDate.setText(StartedRental.getStartOate());
         txEndDate.setText(StartedRental.getEndOate());
     }
+
+
 
     private void setAutocamper() {
         txAutoCamper.setText(StartedRental.getSelectedAutocamper().toString());
@@ -65,10 +67,6 @@ public class CreateRentalCustomController implements Initializable {
 
 
 
-    public void onButtonAddCoDriver(){
-        MainController.getInstance().changeView(ViewList.CODRIVER, BorderPaneRegion.CENTER);
-    }
-
     public void onButtonBack(){
         MainController.getInstance().changeView(ViewList.CREATERENTAL, BorderPaneRegion.CENTER);
     }
@@ -76,17 +74,32 @@ public class CreateRentalCustomController implements Initializable {
     public void onButtonCancel(){
 
         resetStartedRental();
-
         MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
     }
 
 
     public void onButtonConfirm(){
 
-        saveRentalInformation();
+        if (!checkIfEmptyTextFields() || cbInsurance.getSelectionModel().isEmpty()){
+            final Alert ALERT_INFO = new Alert(MainController.getInstance(), 5, AlertType.INFO, "Some information is missing.");
+            ALERT_INFO.start();
+        }
+        else {
+            saveRentalInformation();
 
-        resetStartedRental();
-        System.out.println("Printing rental");
+            resetStartedRental();
+            System.out.println("Printing rental");
+        }
+    }
+
+    private boolean checkIfEmptyTextFields() {
+
+        for (TextField textField : textFields) {
+            if (textField.getText().isEmpty()) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
@@ -100,25 +113,51 @@ public class CreateRentalCustomController implements Initializable {
     }
 
 
+    private void addTextFields() {
+
+        textFields.add(txStartDate);
+        textFields.add(txEndDate);
+        textFields.add(txAutoCamper);
+        textFields.add(txCustomerEmail);
+        textFields.add(txCustomerFirstName);
+        textFields.add(txCustomerLastName);
+        textFields.add(txCustomerStreet);
+        textFields.add(txCustomerCountry);
+        textFields.add(txCustomerZipcode);
+        textFields.add(txCustomerCity);
+        textFields.add(txCustomerPhoneNo);
+        textFields.add(txCustomerDriverLicense);
+    }
+
+
     private void saveRentalInformation() {
 
-        Rental rental = new Rental();
+        Date startDate = Date.valueOf(txStartDate.getText());
+        Date endDate = Date.valueOf(txEndDate.getText());
+        String chassisNo = StartedRental.getSelectedAutocamper().getChassisNo();
+        String insurance = (String) cbInsurance.getSelectionModel().getSelectedItem();
 
-        txStartDate.getText();
-        txEndDate.getText();
-        Autocamper autocamper = StartedRental.getSelectedAutocamper();
-        cbInsurance.getSelectionModel().getSelectedItem();
+        Rental rental = new Rental(startDate, endDate, chassisNo, insurance);
+
+        rentalDao.add(rental);
     }
 
 
     private void saveCustomInformation(){
 
+        String custFirstName = txCustomerFirstName.getText();
+        String custLastName = txCustomerLastName.getText();
+        String custPhoneNo = txCustomerPhoneNo.getText();
+        String custEmail = txCustomerEmail.getText();
+        String custDrivLic = txCustomerDriverLicense.getText();
+        String adress = txCustomerStreet.getText();
+        String country = txCustomerCountry.getText();
+        int zipcode = Integer.parseInt(txCustomerZipcode.getText());
+
+        Customer customer = new Customer();
     }
 
 
-    private void saveCoDriverInformation(){
-
-    }
 
 
     private void resetStartedRental() {
