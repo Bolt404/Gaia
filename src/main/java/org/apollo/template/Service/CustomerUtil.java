@@ -1,12 +1,9 @@
 package org.apollo.template.Service;
 
-import javafx.scene.shape.Circle;
 import org.apollo.template.Database.JDBC;
 import org.apollo.template.Domain.Rental.Customer;
 import org.apollo.template.Service.Debugger.DebugMessage;
 
-import javax.lang.model.element.NestingKind;
-import java.io.StringReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -67,8 +64,16 @@ public class CustomerUtil {
         return zipCode;
     }
 
+    /**
+     * Method for getting City name from a given customer
+     * @return Returns the city name as a string
+     */
     public static String getCityName() { return cityName; }
 
+    /**
+     * Method for getting Country name from a given customer
+     * @return Returns the country name as a string
+     */
     public static String getCountryName() { return countryName; }
 
 }

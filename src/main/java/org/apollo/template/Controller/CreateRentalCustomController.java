@@ -224,6 +224,11 @@ public class CreateRentalCustomController implements Initializable {
 
     }
 
+    /**
+     * Method for getting the Country code from a given country name
+     * @param countryName
+     * @return
+     */
     private static String getCountryCode(String countryName){
 
         try {
@@ -243,8 +248,13 @@ public class CreateRentalCustomController implements Initializable {
         return null;
     }
 
+    /**
+     * Method for getting zipCityID from a zipcode
+     * @param zipCode
+     * @return Returns the zipCityID
+     */
     private static int getZipCityID(String zipCode){
-        int zipCityID = -1;
+        int zipCityID = 0;
         try {
             try {
                 zipCityID = Integer.parseInt(zipCode);
