@@ -8,7 +8,7 @@ public class LoginController {
 
     @FXML
     protected void onLogin(){
-        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
+        MainController.getInstance().changeView(ViewList.ViewAutoCampers, BorderPaneRegion.CENTER);
         MainController.getInstance().changeView(ViewList.MENU, BorderPaneRegion.RIGHT);
         MainController.getInstance().changeView(ViewList.TOPBAR, BorderPaneRegion.TOP);
     }

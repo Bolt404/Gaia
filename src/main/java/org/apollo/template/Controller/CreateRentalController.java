@@ -85,7 +85,7 @@ public class CreateRentalController implements Initializable{
      * Method for handling the cancellation process by navigating back to the home view.
      */
     public void onButtonCancel(){
-        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
+        MainController.getInstance().changeView(ViewList.ViewAutoCampers, BorderPaneRegion.CENTER);
     }
 
 

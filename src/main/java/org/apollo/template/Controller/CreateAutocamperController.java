@@ -164,6 +164,6 @@ public class CreateAutocamperController implements Initializable {
      */
     @FXML
     protected void onCancelClick() {
-        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
+        MainController.getInstance().changeView(ViewList.ViewAutoCampers, BorderPaneRegion.CENTER);
     }
 }
