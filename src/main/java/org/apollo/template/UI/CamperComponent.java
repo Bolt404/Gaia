@@ -21,7 +21,6 @@ public class CamperComponent extends VBox {
     private Color colorLux;
     private Color colorReg;
     private Color colorBas;
-    private String path;
 
     /**
      * CamperComponent to display Autocamper Object in view.
@@ -35,8 +34,6 @@ public class CamperComponent extends VBox {
         setInSeson(autocamper.getMainSeasonPrice());
         setOutSeson(autocamper.getLowSeasonPrice());
         switchColorOfClass(autocamper.getType());
-        setPath(path);
-
 
         setMaxHeight(100);
         setMaxWidth(100);
@@ -201,9 +198,5 @@ public class CamperComponent extends VBox {
 
     public void setColorBas(Color colorBas) {
         this.colorBas = colorBas;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
     }
 }

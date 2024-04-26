@@ -25,8 +25,6 @@ public class AllAutocampersViewController implements Initializable {
     private VBox mainVbox;
     private int gridColumn;
     private int gridRow;
-    private boolean hasRun = false;
-
     private DaoAbleImplAutoCamper daoImplAutoCamper = new DaoAbleImplAutoCamper();
 
     private AllAutocampersViewController() {
