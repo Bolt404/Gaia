@@ -14,14 +14,11 @@ import org.apollo.template.Service.Alert.AlertType;
 import org.apollo.template.Service.DateTimeUtill;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
-import org.apollo.template.persistence.Dao.DAO;
-import org.apollo.template.persistence.Dao.DAOImplCamperType;
-import org.apollo.template.persistence.Dao.DaoImplAutoCamper;
+import org.apollo.template.persistence.Dao.DAOAble;
+import org.apollo.template.persistence.Dao.DAOAbleImplCamperType;
+import org.apollo.template.persistence.Dao.DaoAbleImplAutoCamper;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import static org.apollo.template.Service.JavaFxControlerToImageViewBind.*;
@@ -65,8 +62,8 @@ public class CreateAutocamperController implements Initializable {
         bindImageToButton();
 
         // loading choose boxes.
-        final DAO<CamperType, String> dao = new DAOImplCamperType();
-        cbCamperType.getItems().addAll(dao.readAll());
+        final DAOAble<CamperType, String> daoAble = new DAOAbleImplCamperType();
+        cbCamperType.getItems().addAll(daoAble.readAll());
     }
 
     /**
@@ -102,7 +99,7 @@ public class CreateAutocamperController implements Initializable {
 
         final Alert ALERT_SUCCESS = new Alert(MainController.getInstance(), 3, AlertType.SUCCESS, "auto camper was successfully created!");
         final Alert ALERT_ERROR = new Alert(MainController.getInstance(), 3, AlertType.ERROR, "The auto camper could not be created");
-        final DAO<Autocamper, String> dao = new DaoImplAutoCamper();
+        final DAOAble<Autocamper, String> daoAble = new DaoAbleImplAutoCamper();
 
         // checking if all requirements are for field.
         if (!validateCamperCreation()){
@@ -132,7 +129,7 @@ public class CreateAutocamperController implements Initializable {
 
 
         try {
-            dao.add(autocamper);
+            daoAble.add(autocamper);
         } catch (RuntimeException e){
             ALERT_ERROR.start();
             return;
@@ -164,6 +161,6 @@ public class CreateAutocamperController implements Initializable {
      */
     @FXML
     protected void onCancelClick() {
-        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
+        MainController.getInstance().changeView(ViewList.ViewAutoCampers, BorderPaneRegion.CENTER);
     }
 }

@@ -6,6 +6,10 @@ import javafx.scene.control.TextField;
 
 public class EmailTextField extends TextField {
 
+    /**
+     * A TextField that has access to a method which can validate if
+     * the given text in a TextField has the form of an email address
+     */
     public EmailTextField(){
         super();
     }

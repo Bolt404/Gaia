@@ -23,16 +23,6 @@ public class MenuController {
 
 
     @FXML
-    protected void onBtnHome() {
-        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
-    }
-
-    @FXML
-    protected void onBtnSettings( ) {
-        MainController.getInstance().changeView(ViewList.SETTINGS, BorderPaneRegion.CENTER);
-    }
-
-    @FXML
     protected void onBtnGame( ) {
         MainController.getInstance().changeView(ViewList.CREATERENTAL, BorderPaneRegion.CENTER);
     }

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DAOImplCamperType implements DAO<CamperType, String>{
+public class DAOAbleImplCamperType implements DAOAble<CamperType, String> {
 
     private Connection conn = JDBC.get().getConnection();
 

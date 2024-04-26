@@ -1,5 +1,9 @@
 package org.apollo.template.Domain.Rental;
 
+/**
+ * Represents a model of a customer
+ */
+
 public class Customer {
 
     private String customerID, customerFirstName, customerLastName, customerPhoneNumber;
@@ -14,6 +18,19 @@ public class Customer {
 
     public Customer(){}
 
+    /**
+     *  Constructs a customer with specified parameters
+     * @param customerID The ID of a customer, consisting of country code + driving licence no
+     * @param customerFirstName The customers first name
+     * @param customerLastName The customers last name
+     * @param customerPhoneNumber The customers phone number
+     * @param customerEmail The customers email address
+     * @param customerDrivingLicenceNo The customers driving licence number
+     * @param customerAddress The customers Address
+     * @param customerCountry The country the customers is from
+     * @param zipCity The zipCity ID of the city the customer is from
+     * @param noOfRentals The number of rentals the customer has made in total
+     */
     public Customer(String customerID, String customerFirstName, String customerLastName, String customerPhoneNumber,
                     String customerEmail, String customerDrivingLicenceNo, String customerAddress, String customerCountry,
                     int zipCity, int noOfRentals){

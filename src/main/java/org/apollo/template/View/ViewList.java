@@ -25,15 +25,6 @@ public enum ViewList {
      */
     CREATERENTALCUSTOM("CreateRental_Customer.fxml", new CreateRentalCustomController()),
 
-    /**
-     * Settings view.
-     */
-    SETTINGS("SettingsView.fxml", SettingsController.getInstance()),
-
-    /**
-     * Home view.
-     */
-    HOME("HomeView.fxml", HomeController.getInstance()),
     CreateAutocamper("CreateAutocamperView.fxml", new CreateAutocamperController()),
     TOPBAR("TopbarView.fxml", new TopbarController()),
     LOGIN("LoginView.fxml", new LoginController()),

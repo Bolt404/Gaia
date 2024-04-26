@@ -1,6 +1,5 @@
 package org.apollo.template.Controller;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -8,7 +7,7 @@ import javafx.scene.layout.*;
 import org.apollo.template.Domain.Autocamper;
 import org.apollo.template.Service.Debugger.DebugMessage;
 import org.apollo.template.UI.CamperComponent;
-import org.apollo.template.persistence.Dao.DaoImplAutoCamper;
+import org.apollo.template.persistence.Dao.DaoAbleImplAutoCamper;
 
 import java.io.File;
 import java.net.URL;
@@ -28,7 +27,7 @@ public class AllAutocampersViewController implements Initializable {
     private int gridRow;
     private boolean hasRun = false;
 
-    private DaoImplAutoCamper daoImplAutoCamper = new DaoImplAutoCamper();
+    private DaoAbleImplAutoCamper daoImplAutoCamper = new DaoAbleImplAutoCamper();
 
     private AllAutocampersViewController() {
 

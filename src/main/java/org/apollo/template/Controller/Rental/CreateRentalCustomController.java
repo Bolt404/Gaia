@@ -18,9 +18,9 @@ import org.apollo.template.Service.ListenerUtill;
 import org.apollo.template.Service.StartedRental;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
-import org.apollo.template.persistence.Dao.DAO;
-import org.apollo.template.persistence.Dao.DaoImplCustomer;
-import org.apollo.template.persistence.Dao.DaoImplRental;
+import org.apollo.template.persistence.Dao.DAOAble;
+import org.apollo.template.persistence.Dao.DaoAbleImplCustomer;
+import org.apollo.template.persistence.Dao.DaoAbleImplRental;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -45,11 +45,11 @@ public class CreateRentalCustomController implements Initializable {
     List<TextField> textFields = new ArrayList<>();
 
 
-    private DaoImplRental rentalDao = new DaoImplRental();
+    private DaoAbleImplRental rentalDao = new DaoAbleImplRental();
     private Customer customer;
     private boolean newCustomer = true;
     private static Connection con = JDBC.get().getConnection();
-    private DAO<Autocamper, String> autocamperDao;
+    private DAOAble<Autocamper, String> autocamperDaoAble;
 
 
 
@@ -138,13 +138,10 @@ public class CreateRentalCustomController implements Initializable {
     public void onButtonCancel(){
 
         resetStartedRental();
-        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
+        MainController.getInstance().changeView(ViewList.ViewAutoCampers, BorderPaneRegion.CENTER);
     }
 
 
-    /**
-     *
-     */
     public void onButtonConfirm(){
 
 
@@ -161,11 +158,6 @@ public class CreateRentalCustomController implements Initializable {
         }
     }
 
-
-    /**
-     *
-     * @return
-     */
     private boolean checkIfEmptyTextFields() {
 
         for (TextField textField : textFields) {
@@ -187,9 +179,6 @@ public class CreateRentalCustomController implements Initializable {
     }
 
 
-    /**
-     * Method for
-     */
     private void addTextFields() {
 
         textFields.add(txStartDate);
@@ -207,9 +196,6 @@ public class CreateRentalCustomController implements Initializable {
     }
 
 
-    /**
-     * MEthod for
-     */
     private void saveRentalInformation() {
 
         Date startDate = Date.valueOf(txStartDate.getText());
@@ -223,12 +209,9 @@ public class CreateRentalCustomController implements Initializable {
     }
 
 
-    /**
-     * Method for
-     */
     private void saveCustomInformation(){
 
-        DaoImplCustomer dao = new DaoImplCustomer();
+        DaoAbleImplCustomer dao = new DaoAbleImplCustomer();
 
         Customer addCustomer = new Customer(
                 getCountryCode(txCustomerCountry.getText()) + txCustomerDriverLicense.getText(),
@@ -253,14 +236,14 @@ public class CreateRentalCustomController implements Initializable {
             DebugMessage.info(new CreateRentalCustomController(), "Added new Customer");
         }
 
-        MainController.getInstance().changeView(ViewList.HOME, BorderPaneRegion.CENTER);
+        MainController.getInstance().changeView(ViewList.ViewAutoCampers, BorderPaneRegion.CENTER);
 
     }
 
 
-    /**
-     * Method for
-     */
+
+
+
     private void resetStartedRental() {
 
         StartedRental.setStartOate(null);
@@ -269,9 +252,8 @@ public class CreateRentalCustomController implements Initializable {
 
     }
 
-
     /**
-     * Method for
+     * Method for getting the Country code from a given country name
      * @param countryName
      * @return
      */
@@ -294,14 +276,13 @@ public class CreateRentalCustomController implements Initializable {
         return null;
     }
 
-
     /**
-     * Method for
+     * Method for getting zipCityID from a zipcode
      * @param zipCode
-     * @return
+     * @return Returns the zipCityID
      */
     private static int getZipCityID(String zipCode){
-        int zipCityID = -1;
+        int zipCityID = 0;
         try {
             try {
                 zipCityID = Integer.parseInt(zipCode);

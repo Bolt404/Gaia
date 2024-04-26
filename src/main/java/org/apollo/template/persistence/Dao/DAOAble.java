@@ -2,7 +2,7 @@ package org.apollo.template.persistence.Dao;
 
 import java.util.List;
 
-public interface DAO <T, I>{
+public interface DAOAble<T, I>{
 
     void add(T t);
     void addAll(List<T> list);

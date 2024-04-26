@@ -3,7 +3,7 @@ package org.apollo.template.Service;
 import org.apollo.template.Database.JDBC;
 import org.apollo.template.Domain.Autocamper;
 import org.apollo.template.Service.Debugger.DebugMessage;
-import org.apollo.template.persistence.Dao.DaoImplAutoCamper;
+import org.apollo.template.persistence.Dao.DaoAbleImplAutoCamper;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class RentalUtil {
 
     Connection con = JDBC.get().getConnection();
 
-    DaoImplAutoCamper dao = new DaoImplAutoCamper();
+    DaoAbleImplAutoCamper dao = new DaoAbleImplAutoCamper();
 
 
     public List<Autocamper> availableAutocampers(Date startDate, Date endDate, String type){

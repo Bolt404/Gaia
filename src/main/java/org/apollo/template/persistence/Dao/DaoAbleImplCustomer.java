@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DaoImplCustomer implements DAO<Customer, String>{
+public class DaoAbleImplCustomer implements DAOAble<Customer, String> {
 
     Connection con = JDBC.get().getConnection();
 

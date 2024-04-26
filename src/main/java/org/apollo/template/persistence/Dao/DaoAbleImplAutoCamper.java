@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DaoImplAutoCamper implements DAO<Autocamper, String> {
+public class DaoAbleImplAutoCamper implements DAOAble<Autocamper, String> {
     Connection con = JDBC.get().getConnection();
 
     @Override
