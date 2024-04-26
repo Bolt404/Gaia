@@ -66,13 +66,16 @@ public class CreateRentalCustomController implements Initializable {
 
         emailListener();
 
-
-
     }
 
 
     /**
-     *
+     * Method for setting up a listener on the txCustomerEmail TextField. This listener triggers
+     * when the TextField loses focus and fetches customer information using the entered email.
+     * If a valid customer is retrieved, their details are populated into the corresponding fields
+     * in the form.
+     * It also prints the customer's city name to the console and
+     * sets a flag indicating that a new customer is not being created.
      */
     private void emailListener() {
 
@@ -99,26 +102,39 @@ public class CreateRentalCustomController implements Initializable {
     }
 
 
+    /**
+     * Method for setting the start and end dates of a rental period in the corresponding TextFields.
+     * This method retrieves the start and end dates from the StartedRental class and updates the
+     * txStartDate and txEndDate TextFields with these values.
+     */
     private void setPeriod() {
         txStartDate.setText(StartedRental.getStartOate());
         txEndDate.setText(StartedRental.getEndOate());
     }
 
 
-
+    /**
+     * Method for setting the text of the txAutoCamper TextField to the selected autocamper's description.
+     * Retrieves the currently selected autocamper from the StartedRental class and sets its string representation
+     * as the text in the txAutoCamper TextField.
+     */
     private void setAutocamper() {
         txAutoCamper.setText(StartedRental.getSelectedAutocamper().toString());
     }
 
 
-
-
-
-
+    /**
+     * Method for handling the "Back" button action by returning to the "Create Rental" view
+     */
     public void onButtonBack(){
         MainController.getInstance().changeView(ViewList.CREATERENTAL, BorderPaneRegion.CENTER);
     }
 
+
+    /**
+     * Method for handling the cancellation process by navigating back to the home view.
+     * Before navigating back, all the data in Started Rental is reset.
+     */
     public void onButtonCancel(){
 
         resetStartedRental();
@@ -126,6 +142,9 @@ public class CreateRentalCustomController implements Initializable {
     }
 
 
+    /**
+     *
+     */
     public void onButtonConfirm(){
 
 
@@ -142,6 +161,11 @@ public class CreateRentalCustomController implements Initializable {
         }
     }
 
+
+    /**
+     *
+     * @return
+     */
     private boolean checkIfEmptyTextFields() {
 
         for (TextField textField : textFields) {
@@ -163,6 +187,9 @@ public class CreateRentalCustomController implements Initializable {
     }
 
 
+    /**
+     * Method for
+     */
     private void addTextFields() {
 
         textFields.add(txStartDate);
@@ -180,6 +207,9 @@ public class CreateRentalCustomController implements Initializable {
     }
 
 
+    /**
+     * MEthod for
+     */
     private void saveRentalInformation() {
 
         Date startDate = Date.valueOf(txStartDate.getText());
@@ -193,6 +223,9 @@ public class CreateRentalCustomController implements Initializable {
     }
 
 
+    /**
+     * Method for
+     */
     private void saveCustomInformation(){
 
         DaoImplCustomer dao = new DaoImplCustomer();
@@ -225,9 +258,9 @@ public class CreateRentalCustomController implements Initializable {
     }
 
 
-
-
-
+    /**
+     * Method for
+     */
     private void resetStartedRental() {
 
         StartedRental.setStartOate(null);
@@ -236,6 +269,12 @@ public class CreateRentalCustomController implements Initializable {
 
     }
 
+
+    /**
+     * Method for
+     * @param countryName
+     * @return
+     */
     private static String getCountryCode(String countryName){
 
         try {
@@ -255,6 +294,12 @@ public class CreateRentalCustomController implements Initializable {
         return null;
     }
 
+
+    /**
+     * Method for
+     * @param zipCode
+     * @return
+     */
     private static int getZipCityID(String zipCode){
         int zipCityID = -1;
         try {
