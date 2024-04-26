@@ -10,9 +10,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import org.apollo.template.Domain.Autocamper;
 
-
 public class CamperComponent extends VBox {
-
     private String LicensePlate = "AB101010";
     private int kmCount = 999;
     private int noRentals = 10;
@@ -23,7 +21,6 @@ public class CamperComponent extends VBox {
     private Color colorLux;
     private Color colorReg;
     private Color colorBas;
-
     private String path;
 
     /**
