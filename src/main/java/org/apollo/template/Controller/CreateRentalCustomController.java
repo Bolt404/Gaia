@@ -17,9 +17,9 @@ import org.apollo.template.Service.ListenerUtill;
 import org.apollo.template.Service.StartedRental;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
-import org.apollo.template.persistence.Dao.DAO;
-import org.apollo.template.persistence.Dao.DaoImplCustomer;
-import org.apollo.template.persistence.Dao.DaoImplRental;
+import org.apollo.template.persistence.Dao.DAOAble;
+import org.apollo.template.persistence.Dao.DaoAbleImplCustomer;
+import org.apollo.template.persistence.Dao.DaoAbleImplRental;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -44,11 +44,11 @@ public class CreateRentalCustomController implements Initializable {
     List<TextField> textFields = new ArrayList<>();
 
 
-    private DaoImplRental rentalDao = new DaoImplRental();
+    private DaoAbleImplRental rentalDao = new DaoAbleImplRental();
     private Customer customer;
     private boolean newCustomer = true;
     private static Connection con = JDBC.get().getConnection();
-    private DAO<Autocamper, String> autocamperDao;
+    private DAOAble<Autocamper, String> autocamperDaoAble;
 
 
 
@@ -194,7 +194,7 @@ public class CreateRentalCustomController implements Initializable {
 
     private void saveCustomInformation(){
 
-        DaoImplCustomer dao = new DaoImplCustomer();
+        DaoAbleImplCustomer dao = new DaoAbleImplCustomer();
 
         Customer addCustomer = new Customer(
                 getCountryCode(txCustomerCountry.getText()) + txCustomerDriverLicense.getText(),

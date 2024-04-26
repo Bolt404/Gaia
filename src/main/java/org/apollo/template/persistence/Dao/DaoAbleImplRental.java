@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-public class DaoImplRental implements DAO<Rental, Integer>{
+public class DaoAbleImplRental implements DAOAble<Rental, Integer> {
     Connection con = JDBC.get().getConnection();
 
     @Override

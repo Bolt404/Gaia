@@ -8,7 +8,7 @@ import org.apollo.template.Service.CustomerUtil;
 import org.apollo.template.Service.Debugger.DebugMessage;
 import org.apollo.template.View.BorderPaneRegion;
 import org.apollo.template.View.ViewList;
-import org.apollo.template.persistence.Dao.DaoImplCustomer;
+import org.apollo.template.persistence.Dao.DaoAbleImplCustomer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -70,7 +70,7 @@ public class EditCustomerController implements Initializable {
                 customer.setCustomerAddress(txCustomerStreet.getText());
                 customer.setCustomerCountry(txCustomerCountry.getText());
 
-                DaoImplCustomer dao = new DaoImplCustomer();
+                DaoAbleImplCustomer dao = new DaoAbleImplCustomer();
 
                 dao.update(customer);
 
