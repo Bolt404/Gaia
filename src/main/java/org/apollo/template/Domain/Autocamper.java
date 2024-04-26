@@ -254,7 +254,7 @@ public class Autocamper {
      * @param integer to be checked.
      * @return boolean, false for negative.
      */
-    private boolean validateIntegerNotNegative(int integer){
+    public boolean validateIntegerNotNegative(int integer){
         return integer > 0;
     }
 
@@ -263,7 +263,7 @@ public class Autocamper {
      * @param floatingPointNumber to be checked.
      * @return boolean, false for negative.
      */
-    private boolean validateFloatNotNegative(float floatingPointNumber){
+    public boolean validateFloatNotNegative(float floatingPointNumber){
         return floatingPointNumber > 0;
     }
 
